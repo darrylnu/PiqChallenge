@@ -114,7 +114,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already Registered?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VX3-51-YMg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already Registered?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VX3-51-YMg">
                                 <rect key="frame" x="76" y="306" width="153" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="153" id="Z1I-2e-ZML"/>
@@ -181,11 +181,58 @@
                         <outlet property="registeredLabel" destination="VX3-51-YMg" id="V0Z-eF-0e3"/>
                         <outlet property="signUpLabel" destination="hXs-iC-aM6" id="jtj-KM-0IR"/>
                         <outlet property="userNameField" destination="vM1-42-TKW" id="A8K-Ya-x4M"/>
+                        <segue destination="kx8-uu-8nU" kind="show" identifier="login" id="2IV-7U-P9g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="304.5" y="357.5"/>
+        </scene>
+        <!--User List-->
+        <scene sceneID="v1B-WU-jv9">
+            <objects>
+                <tableViewController id="QdI-4N-4hI" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="j2c-HY-k8q">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="QmD-c9-MFf">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QmD-c9-MFf" id="GGx-4n-xIe">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="QdI-4N-4hI" id="1Vk-B8-fPS"/>
+                            <outlet property="delegate" destination="QdI-4N-4hI" id="L0C-S8-ohJ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="User List" id="Xqd-Eo-JhL"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cl5-8o-hje" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1687" y="358"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RqM-fz-8xe">
+            <objects>
+                <navigationController id="kx8-uu-8nU" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6O3-kV-sQz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="QdI-4N-4hI" kind="relationship" relationship="rootViewController" id="3ik-K5-PTL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Inf-t4-w9n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="867" y="358"/>
         </scene>
     </scenes>
 </document>
