@@ -11,7 +11,29 @@ import UIKit
 import Parse
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UIAdaptivePresentationControllerDelegate {
+    
+    
+    @IBOutlet var userNameField: UITextField!
 
+    @IBOutlet var passwordField: UITextField!
+    
+    @IBAction func signUp(sender: AnyObject) {
+        
+        if userNameField.text == "" || passwordField.text == "" {
+            
+            let alert = UIAlertController(title: "Error in form", message: "Please enter a username and password", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) -> Void in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
+    @IBAction func login(sender: AnyObject) {
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
