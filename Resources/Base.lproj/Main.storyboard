@@ -201,7 +201,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QmD-c9-MFf" id="GGx-4n-xIe">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -211,12 +211,99 @@
                             <outlet property="delegate" destination="QdI-4N-4hI" id="L0C-S8-ohJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="User List" id="Xqd-Eo-JhL"/>
+                    <navigationItem key="navigationItem" title="User List" id="Xqd-Eo-JhL">
+                        <barButtonItem key="backBarButtonItem" title="Users" id="mpt-nU-mQF">
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="KOY-kT-kpM">
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="PSy-nj-Cak" kind="show" id="QNO-fb-4qp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cl5-8o-hje" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1687" y="358"/>
+            <point key="canvasLocation" x="1376.5" y="357.5"/>
+        </scene>
+        <!--CameraView-->
+        <scene sceneID="wjb-KQ-igB">
+            <objects>
+                <viewController title="CameraView" id="PSy-nj-Cak" customClass="CameraViewController" customModule="ChallengeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VqG-S8-we0"/>
+                        <viewControllerLayoutGuide type="bottom" id="gJZ-uc-d49"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="n7D-vt-FlT">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0u-59-HJs">
+                                <rect key="frame" x="128" y="255" width="119" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="119" id="LGo-ck-RnG"/>
+                                    <constraint firstAttribute="height" constant="30" id="ciw-hg-6j1"/>
+                                </constraints>
+                                <state key="normal" title="Choose an image">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="chooseImage:" destination="PSy-nj-Cak" eventType="touchUpInside" id="PUF-Al-Scn"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="add a comment to your post" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wmd-cw-T0p">
+                                <rect key="frame" x="17" y="293" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1f1-XZ-ItP">
+                                <rect key="frame" x="155" y="354" width="66" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="YH8-pd-GeX"/>
+                                    <constraint firstAttribute="width" constant="66" id="xUN-z9-3CQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Post it!">
+                                    <color key="titleColor" red="0.97316899806700863" green="0.93344306472790939" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="postImage:" destination="PSy-nj-Cak" eventType="touchUpInside" id="jEk-6m-d9O"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1455683886_camera.png" translatesAutoresizingMaskIntoConstraints="NO" id="Tfh-6D-xFQ">
+                                <rect key="frame" x="66" y="35" width="243" height="201"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="201" id="ety-q3-pkv"/>
+                                    <constraint firstAttribute="width" constant="243" id="imL-g1-0l3"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="i0u-59-HJs" firstAttribute="top" secondItem="Tfh-6D-xFQ" secondAttribute="bottom" constant="19" id="5xV-qO-ATu"/>
+                            <constraint firstItem="i0u-59-HJs" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="FKC-Tc-X7g"/>
+                            <constraint firstItem="wmd-cw-T0p" firstAttribute="top" secondItem="i0u-59-HJs" secondAttribute="bottom" constant="8" id="Gxy-ph-tEe"/>
+                            <constraint firstItem="wmd-cw-T0p" firstAttribute="leading" secondItem="n7D-vt-FlT" secondAttribute="leadingMargin" constant="1" id="Hn8-Bf-I94"/>
+                            <constraint firstItem="1f1-XZ-ItP" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="QPE-PK-1RF"/>
+                            <constraint firstItem="1f1-XZ-ItP" firstAttribute="top" secondItem="wmd-cw-T0p" secondAttribute="bottom" constant="31" id="ZNy-3r-kUi"/>
+                            <constraint firstItem="Tfh-6D-xFQ" firstAttribute="top" secondItem="VqG-S8-we0" secondAttribute="bottom" constant="35" id="tcE-l6-jS6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wmd-cw-T0p" secondAttribute="trailing" constant="-1" id="xpv-Dz-ave"/>
+                            <constraint firstItem="Tfh-6D-xFQ" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="yDf-Ra-JFG"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="comment" destination="wmd-cw-T0p" id="ro9-ug-zPS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4kK-LB-VgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1907.5" y="357.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RqM-fz-8xe">
@@ -225,6 +312,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6O3-kV-sQz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="QdI-4N-4hI" kind="relationship" relationship="rootViewController" id="3ik-K5-PTL"/>
@@ -235,4 +323,7 @@
             <point key="canvasLocation" x="867" y="358"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="1455683886_camera.png" width="128" height="128"/>
+    </resources>
 </document>
