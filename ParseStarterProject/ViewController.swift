@@ -147,6 +147,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UIAdapt
         
         if PFUser.currentUser() != nil {
             self.performSegueWithIdentifier("login", sender: self)
+            
 
         }
     }
