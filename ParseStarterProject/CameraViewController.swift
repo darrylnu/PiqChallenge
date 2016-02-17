@@ -65,6 +65,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         image.allowsEditing = true
         
         var alert = UIAlertController(title: "Choose Upload Source", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.view.tintColor = UIColor.redColor()
         alert.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
             image.sourceType = UIImagePickerControllerSourceType.Camera
             alert.dismissViewControllerAnimated(true, completion: nil)
