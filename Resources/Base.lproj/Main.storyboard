@@ -299,6 +299,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="comment" destination="wmd-cw-T0p" id="ro9-ug-zPS"/>
+                        <outlet property="imagePlaceholder" destination="Tfh-6D-xFQ" id="VND-IR-GgS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kK-LB-VgM" userLabel="First Responder" sceneMemberID="firstResponder"/>

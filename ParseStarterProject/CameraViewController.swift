@@ -13,13 +13,40 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
     
     @IBOutlet var comment: UITextField!
     
+    @IBOutlet var imagePlaceholder: UIImageView!
+    
     @IBAction func postImage(sender: AnyObject) {
+        
+        let imageData = UIImagePNGRepresentation(imagePlaceholder.image!)
+        let imageFile = PFFile(name: "image.png", data: imageData!)
+        
+        var post = PFObject(className: "Posts")
+        post["userId"] = PFUser.currentUser()?.objectId
+        post["imageComment"] = comment.text
+        post["imageFile"] = imageFile
+        
+        post.saveInBackgroundWithBlock { (success, error) -> Void in
+            if error == nil {
+                print("success")
+            }
+        }
+        
+        
     }
     @IBAction func chooseImage(sender: AnyObject) {
         var image = UIImagePickerController()
         image.delegate = self
         image.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        image.allowsEditing = true
         
+        self.presentViewController(image, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        imagePlaceholder.image = image
     }
 
     override func viewDidLoad() {
