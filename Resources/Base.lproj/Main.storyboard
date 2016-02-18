@@ -217,16 +217,25 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem title="home" id="ZgF-n5-GNs">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Fif-6B-n23" kind="show" id="v4Q-gz-FHx"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="jhd-2U-KU1"/>
-                        <barButtonItem title="users" id="hFg-Wj-mv7"/>
+                        <barButtonItem title="users" id="hFg-Wj-mv7">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="i5L-Mx-aF8"/>
-                        <barButtonItem title="challenges" id="puK-Af-tht"/>
+                        <barButtonItem title="challenges" id="puK-Af-tht">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="cXM-Ii-RcL" kind="show" id="fQ6-63-fSz"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="VF8-gb-apU"/>
                         <barButtonItem systemItem="camera" id="d21-lc-BcJ">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="PSy-nj-Cak" kind="show" id="pmq-GD-PkH"/>
                             </connections>
@@ -241,12 +250,76 @@
             </objects>
             <point key="canvasLocation" x="1376.5" y="357.5"/>
         </scene>
+        <!--Challenge View-->
+        <scene sceneID="21r-br-S3e">
+            <objects>
+                <tableViewController title="Challenge View" id="cXM-Ii-RcL" customClass="ChallengesTableViewController" customModule="ChallengeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="116" sectionHeaderHeight="28" sectionFooterHeight="28" id="Mdu-UB-TG7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeCell" rowHeight="116" id="la4-I6-Gv7" customClass="ChallengeCell" customModule="ChallengeMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="116"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="la4-I6-Gv7" id="MD5-eJ-YVv">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="115.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5h-or-GzM">
+                                            <rect key="frame" x="8" y="8" width="359" height="99.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cXM-Ii-RcL" id="voa-nw-J8m"/>
+                            <outlet property="delegate" destination="cXM-Ii-RcL" id="71E-F9-dAE"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="home" id="T0c-By-TbD">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="Fif-6B-n23" kind="show" id="xtU-w5-5S7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="XDp-lC-H7h"/>
+                        <barButtonItem title="users" id="jhQ-eV-7Dr">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="QdI-4N-4hI" kind="show" id="fuh-v4-jLo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="gih-Tp-eUf"/>
+                        <barButtonItem title="challenges" id="21v-jL-yK8">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="7WB-Gf-1Cb"/>
+                        <barButtonItem systemItem="camera" id="g0g-6b-fvq">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="PSy-nj-Cak" kind="show" id="XFo-h8-1wT"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qlg-aq-B1P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1148.5" y="-467.5"/>
+        </scene>
         <!--Feed-->
         <scene sceneID="ZiG-oL-yHO">
             <objects>
                 <tableViewController title="Feed" id="Fif-6B-n23" customClass="FeedTableViewController" customModule="ChallengeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="307" sectionHeaderHeight="28" sectionFooterHeight="28" id="wwM-XS-Md1">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -257,16 +330,28 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="306.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1455683886_camera.png" translatesAutoresizingMaskIntoConstraints="NO" id="RSA-Rj-QfH">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1455683886_camera.png" translatesAutoresizingMaskIntoConstraints="NO" id="RSA-Rj-QfH">
                                             <rect key="frame" x="67" y="37" width="240" height="200"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="240" id="S0R-uW-yzu"/>
+                                                <constraint firstAttribute="height" constant="200" id="XuW-w7-GyB"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJp-pM-iqa">
-                                            <rect key="frame" x="8" y="256" width="359" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJp-pM-iqa">
+                                            <rect key="frame" x="8" y="245" width="359" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mJp-pM-iqa" firstAttribute="leading" secondItem="Aw9-PP-DyT" secondAttribute="leadingMargin" id="39o-c9-3RD"/>
+                                        <constraint firstItem="RSA-Rj-QfH" firstAttribute="top" secondItem="Aw9-PP-DyT" secondAttribute="topMargin" constant="29" id="G4k-fr-hY3"/>
+                                        <constraint firstItem="mJp-pM-iqa" firstAttribute="centerX" secondItem="Aw9-PP-DyT" secondAttribute="centerX" id="JeA-Gw-9Cb"/>
+                                        <constraint firstItem="RSA-Rj-QfH" firstAttribute="centerX" secondItem="Aw9-PP-DyT" secondAttribute="centerX" id="NtI-4h-s2p"/>
+                                        <constraint firstItem="mJp-pM-iqa" firstAttribute="top" secondItem="RSA-Rj-QfH" secondAttribute="bottom" constant="8" id="Q2C-r6-hUh"/>
+                                        <constraint firstItem="mJp-pM-iqa" firstAttribute="trailing" secondItem="Aw9-PP-DyT" secondAttribute="trailingMargin" id="VTm-3r-ABu"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="imagePost" destination="RSA-Rj-QfH" id="u6v-kA-oYa"/>
@@ -280,17 +365,26 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="home" id="Gf8-Jg-0NQ"/>
+                        <barButtonItem title="home" id="Gf8-Jg-0NQ">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="jE1-9C-A0a"/>
                         <barButtonItem title="users" id="n1Y-4j-5jb">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="QdI-4N-4hI" kind="show" id="G7J-4O-MBe"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="531-RE-CR5"/>
-                        <barButtonItem title="challenges" id="Xd6-x4-N6R"/>
+                        <barButtonItem title="challenges" id="Xd6-x4-N6R">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="cXM-Ii-RcL" kind="show" id="4W6-r7-EHi"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="7AO-fp-4tH"/>
                         <barButtonItem systemItem="camera" id="Y9S-2D-rai">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="PSy-nj-Cak" kind="show" id="oIg-Ap-dA3"/>
                             </connections>
@@ -300,7 +394,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUg-xe-n4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1872.5" y="-347.5"/>
+            <point key="canvasLocation" x="1834.5" y="-661.5"/>
         </scene>
         <!--CameraView-->
         <scene sceneID="wjb-KQ-igB">
@@ -314,8 +408,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0u-59-HJs">
-                                <rect key="frame" x="128" y="255" width="119" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0u-59-HJs">
+                                <rect key="frame" x="128" y="275" width="119" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="119" id="LGo-ck-RnG"/>
                                     <constraint firstAttribute="height" constant="30" id="ciw-hg-6j1"/>
@@ -327,68 +421,116 @@
                                     <action selector="chooseImage:" destination="PSy-nj-Cak" eventType="touchUpInside" id="PUF-Al-Scn"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="add a comment to your post" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wmd-cw-T0p">
-                                <rect key="frame" x="17" y="293" width="343" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1f1-XZ-ItP">
-                                <rect key="frame" x="155" y="354" width="66" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1455683886_camera.png" translatesAutoresizingMaskIntoConstraints="NO" id="Tfh-6D-xFQ">
+                                <rect key="frame" x="66" y="55" width="243" height="201"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="201" id="ety-q3-pkv"/>
+                                    <constraint firstAttribute="width" constant="243" id="imL-g1-0l3"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1f1-XZ-ItP">
+                                <rect key="frame" x="154" y="493" width="66" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="66" id="7Xd-1v-L8E"/>
                                     <constraint firstAttribute="height" constant="30" id="YH8-pd-GeX"/>
+                                    <constraint firstAttribute="height" constant="30" id="drm-jU-Bqd"/>
+                                    <constraint firstAttribute="width" constant="66" id="e62-Z7-6tH"/>
+                                    <constraint firstAttribute="height" constant="30" id="nIC-wg-gkY"/>
                                     <constraint firstAttribute="width" constant="66" id="xUN-z9-3CQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Post it!">
                                     <color key="titleColor" red="0.97316899806700863" green="0.93344306472790939" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7Xd-1v-L8E"/>
+                                        <exclude reference="YH8-pd-GeX"/>
+                                        <exclude reference="nIC-wg-gkY"/>
+                                        <exclude reference="xUN-z9-3CQ"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="postImage:" destination="PSy-nj-Cak" eventType="touchUpInside" id="jEk-6m-d9O"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="1455683886_camera.png" translatesAutoresizingMaskIntoConstraints="NO" id="Tfh-6D-xFQ">
-                                <rect key="frame" x="66" y="35" width="243" height="201"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yjs-yq-KyQ">
+                                <rect key="frame" x="29" y="328" width="317" height="142"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="201" id="ety-q3-pkv"/>
-                                    <constraint firstAttribute="width" constant="243" id="imL-g1-0l3"/>
+                                    <constraint firstAttribute="height" constant="142" id="id2-TA-hWv"/>
+                                    <constraint firstAttribute="width" constant="317" id="j39-xM-pRz"/>
+                                    <constraint firstAttribute="width" constant="317" id="n5A-qc-b4U"/>
+                                    <constraint firstAttribute="height" constant="142" id="nbk-ip-GMx"/>
                                 </constraints>
-                            </imageView>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="n5A-qc-b4U"/>
+                                        <exclude reference="nbk-ip-GMx"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="PSy-nj-Cak" id="gQa-Fu-o1H"/>
+                                    <outlet property="delegate" destination="PSy-nj-Cak" id="gbv-bq-PUm"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="i0u-59-HJs" firstAttribute="top" secondItem="Tfh-6D-xFQ" secondAttribute="bottom" constant="19" id="5xV-qO-ATu"/>
+                            <constraint firstItem="Yjs-yq-KyQ" firstAttribute="top" secondItem="i0u-59-HJs" secondAttribute="bottom" constant="38" id="EfY-qa-Nnb"/>
                             <constraint firstItem="i0u-59-HJs" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="FKC-Tc-X7g"/>
-                            <constraint firstItem="wmd-cw-T0p" firstAttribute="top" secondItem="i0u-59-HJs" secondAttribute="bottom" constant="8" id="Gxy-ph-tEe"/>
-                            <constraint firstItem="wmd-cw-T0p" firstAttribute="leading" secondItem="n7D-vt-FlT" secondAttribute="leadingMargin" constant="1" id="Hn8-Bf-I94"/>
+                            <constraint firstItem="Yjs-yq-KyQ" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="Npa-Ev-w7Y"/>
                             <constraint firstItem="1f1-XZ-ItP" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="QPE-PK-1RF"/>
-                            <constraint firstItem="1f1-XZ-ItP" firstAttribute="top" secondItem="wmd-cw-T0p" secondAttribute="bottom" constant="31" id="ZNy-3r-kUi"/>
+                            <constraint firstItem="1f1-XZ-ItP" firstAttribute="top" secondItem="Yjs-yq-KyQ" secondAttribute="bottom" constant="8" symbolic="YES" id="T8s-GY-vvf"/>
+                            <constraint firstItem="1f1-XZ-ItP" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="W6Z-z5-fi1"/>
+                            <constraint firstItem="Yjs-yq-KyQ" firstAttribute="top" secondItem="i0u-59-HJs" secondAttribute="bottom" constant="23" id="ZeH-tM-nlr"/>
+                            <constraint firstItem="1f1-XZ-ItP" firstAttribute="top" secondItem="Yjs-yq-KyQ" secondAttribute="bottom" constant="23" id="haZ-wA-Dyn"/>
+                            <constraint firstItem="1f1-XZ-ItP" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="jrD-dO-J3c"/>
+                            <constraint firstItem="Yjs-yq-KyQ" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="tT0-CC-tms"/>
                             <constraint firstItem="Tfh-6D-xFQ" firstAttribute="top" secondItem="VqG-S8-we0" secondAttribute="bottom" constant="35" id="tcE-l6-jS6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="wmd-cw-T0p" secondAttribute="trailing" constant="-1" id="xpv-Dz-ave"/>
                             <constraint firstItem="Tfh-6D-xFQ" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="yDf-Ra-JFG"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="EfY-qa-Nnb"/>
+                                <exclude reference="Npa-Ev-w7Y"/>
+                                <exclude reference="QPE-PK-1RF"/>
+                                <exclude reference="T8s-GY-vvf"/>
+                                <exclude reference="jrD-dO-J3c"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems>
                         <barButtonItem title="home" id="2Bg-1g-gNl">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Fif-6B-n23" kind="show" id="qbv-lV-7Pn"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="aIk-4K-fme"/>
                         <barButtonItem title="users" id="klo-Vf-sC7">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="QdI-4N-4hI" kind="show" id="5QS-b3-19S"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="cXI-kU-2Lz"/>
-                        <barButtonItem title="challenges" id="2NX-m9-3mi"/>
+                        <barButtonItem title="challenges" id="2NX-m9-3mi">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="cXM-Ii-RcL" kind="show" id="mfg-Ur-3iU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="693-xU-jQu"/>
-                        <barButtonItem systemItem="camera" id="wrE-5t-Tgs"/>
+                        <barButtonItem systemItem="camera" id="wrE-5t-Tgs">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="comment" destination="wmd-cw-T0p" id="ro9-ug-zPS"/>
+                        <outlet property="challengePicker" destination="Yjs-yq-KyQ" id="d7b-aw-ETy"/>
                         <outlet property="imagePlaceholder" destination="Tfh-6D-xFQ" id="VND-IR-GgS"/>
                     </connections>
                 </viewController>
@@ -407,17 +549,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="GP2-FR-h6E">
                         <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </toolbar>
                     <connections>
                         <segue destination="QdI-4N-4hI" kind="relationship" relationship="rootViewController" id="3ik-K5-PTL"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Inf-t4-w9n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="home" id="va7-7b-NzA">
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </barButtonItem>
+                <barButtonItem style="plain" systemItem="flexibleSpace" id="IFE-aw-JTc"/>
+                <barButtonItem title="users" id="HOO-n2-pId">
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </barButtonItem>
+                <barButtonItem style="plain" systemItem="flexibleSpace" id="ZN5-ha-mkB"/>
+                <barButtonItem title="challenges" id="Dd0-fV-gjO">
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </barButtonItem>
+                <barButtonItem style="plain" systemItem="flexibleSpace" id="eu1-lk-fqj"/>
+                <barButtonItem systemItem="camera" id="BIM-EQ-fJU">
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="867" y="358"/>
         </scene>
@@ -426,8 +587,9 @@
         <image name="1455683886_camera.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="qbv-lV-7Pn"/>
         <segue reference="oIg-Ap-dA3"/>
-        <segue reference="v4Q-gz-FHx"/>
-        <segue reference="G7J-4O-MBe"/>
+        <segue reference="mfg-Ur-3iU"/>
+        <segue reference="5QS-b3-19S"/>
     </inferredMetricsTieBreakers>
 </document>

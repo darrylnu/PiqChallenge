@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1716EB691C75FAC2009219AC /* ChallengesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716EB681C75FAC2009219AC /* ChallengesTableViewController.swift */; };
+		1716EB6B1C75FB21009219AC /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1716EB6A1C75FB21009219AC /* ChallengeCell.swift */; };
 		178907631C71B2FF00F0FA1E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 178907621C71B2FF00F0FA1E /* Launch Screen.storyboard */; };
 		179C51561C72E47F00243A08 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179C51551C72E47F00243A08 /* TableViewController.swift */; };
 		179C51581C73D88800243A08 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179C51571C73D88800243A08 /* CameraViewController.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1716EB681C75FAC2009219AC /* ChallengesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesTableViewController.swift; sourceTree = "<group>"; };
+		1716EB6A1C75FB21009219AC /* ChallengeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCell.swift; sourceTree = "<group>"; };
 		178907621C71B2FF00F0FA1E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		179C51551C72E47F00243A08 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		179C51571C73D88800243A08 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				179C51551C72E47F00243A08 /* TableViewController.swift */,
 				179C51571C73D88800243A08 /* CameraViewController.swift */,
 				179C515F1C75986A00243A08 /* FeedTableViewController.swift */,
+				1716EB681C75FAC2009219AC /* ChallengesTableViewController.swift */,
+				1716EB6A1C75FB21009219AC /* ChallengeCell.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 				179C51591C73DD0100243A08 /* 1455683886_camera.png */,
 			);
@@ -204,11 +210,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				179C51601C75986A00243A08 /* FeedTableViewController.swift in Sources */,
+				1716EB6B1C75FB21009219AC /* ChallengeCell.swift in Sources */,
 				179C51621C759B5B00243A08 /* cell.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				179C51581C73D88800243A08 /* CameraViewController.swift in Sources */,
 				179C51561C72E47F00243A08 /* TableViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
+				1716EB691C75FAC2009219AC /* ChallengesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

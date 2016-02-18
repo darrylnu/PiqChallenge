@@ -9,7 +9,13 @@
 import UIKit
 import Parse
 
-class CameraViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class CameraViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate{
+    
+    @IBOutlet var challengePicker: UIPickerView!
+    
+    var challengeSource = ["Choose Challenge", "#randomKiss", "#iceBucket", "#boogerMunch"]
+    var chosenChallenge: String?
+    
     
     var activityIndicator = UIActivityIndicatorView()
     
@@ -22,8 +28,8 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         
         if imagePlaceholder.image != UIImage(named: "1455683886_camera.png") {
             
-//            print(imagePlaceholder)
-//            print(imagePlaceholder.image)
+            //            print(imagePlaceholder)
+            //            print(imagePlaceholder.image)
             
             
             activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
@@ -42,7 +48,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
             
             var post = PFObject(className: "Post")
             post["userId"] = PFUser.currentUser()?.objectId
-            post["imageComment"] = comment.text
+            post["imageComment"] = chosenChallenge
             post["imageFile"] = imageFile
             
             post.saveInBackgroundWithBlock { (success, error) -> Void in
@@ -53,7 +59,6 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
                 if error == nil {
                     print("success")
                     self.imagePlaceholder.image = UIImage(named: "1455683886_camera.png")
-                    self.comment.text = ""
                     self.postedAlerter("Post Successful", message: "Challenge Accepted!", addAction: "Cool")
                     
                     
@@ -108,30 +113,50 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         
     }
     
-
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return challengeSource.count;
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return challengeSource[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        chosenChallenge = challengeSource[row]
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.challengePicker.delegate = self
+        self.challengePicker.dataSource = self
+        
+        
         navigationItem.hidesBackButton = true
-
-
+        
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

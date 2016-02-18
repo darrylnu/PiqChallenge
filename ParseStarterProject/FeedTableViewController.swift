@@ -18,6 +18,8 @@ class FeedTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -87,7 +89,6 @@ class FeedTableViewController: UITableViewController {
 
         }
 
-      print(imageComment)
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,7 +113,7 @@ class FeedTableViewController: UITableViewController {
         let myCell = tableView.dequeueReusableCellWithIdentifier("imagePostCell", forIndexPath: indexPath) as! cell
                 
         if imageFiles.count > 0{
-            myCell.userLabel.text = "\(usernames[indexPath.row]) completed a challenge!"
+            myCell.userLabel.text = "\(usernames[indexPath.row]) completed the \(imageComment[indexPath.row]) challenge!"
             imageFiles[indexPath.row].getDataInBackgroundWithBlock({ (data, error) -> Void in
                 if let downloadedImage = UIImage(data: data!) {
                     
