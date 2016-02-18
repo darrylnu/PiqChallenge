@@ -11,5 +11,7 @@ import UIKit
 class ChallengeCell: UITableViewCell {
 
 
+    @IBOutlet var challengeCount: UILabel!
 
+    @IBOutlet var challengeStrip: UILabel!
 }

@@ -13,7 +13,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
     
     @IBOutlet var challengePicker: UIPickerView!
     
-    var challengeSource = ["Choose Challenge", "#randomKiss", "#iceBucket", "#boogerMunch"]
+    var challengeSource = ["Choose Challenge", "#randomKiss", "#iceBucket", "#boogerMunch", "#pinkRibbon","#blackLivesMatter", "#redShoe"]
     var chosenChallenge: String?
     
     
