@@ -13,7 +13,8 @@ class FeedTableViewController: UITableViewController {
     
     var usersBeingFollowed = [String]()
     var imageFiles = [PFFile]()
-    var imageComment = [String]()
+    var imageComment = [""]
+    var usernames = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,10 @@ class FeedTableViewController: UITableViewController {
         
         getFollowedUsersQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             
+            self.usernames.removeAll(keepCapacity: true)
+            self.imageComment.removeAll(keepCapacity: true)
+            self.imageFiles.removeAll(keepCapacity: true)
+            
             if let objects = objects {
                 
                 for object in objects {
@@ -45,32 +50,44 @@ class FeedTableViewController: UITableViewController {
                     query.findObjectsInBackgroundWithBlock({ (imageObjects, error) -> Void in
                         
                         
+                        
+                        
                         if let objects = imageObjects {
                             
                             for images in objects {
                                 
                                 self.imageFiles.append(images["imageFile"] as! PFFile)
-                                self.usersBeingFollowed.append(images["userId"] as! (String))
                                 self.imageComment.append(images["imageComment"] as! String)
                                 
-                                
+                                var userQuery = PFUser.query()
+                                userQuery?.whereKey("_id", equalTo: images["userId"])
+                                userQuery?.findObjectsInBackgroundWithBlock({ (user, error) -> Void in
+                                    if let user = user {
+                                        for username in user {
+                                            self.usernames.append(username["username"] as! String)
+                                            self.tableView.reloadData()
+                                        }
+                                        
+                                    }
                                
+                                })
+                                
+
                                 
                             }
-                            
+ 
                         }
-                        if self.imageFiles.count > 0 {
-                            self.tableView.reloadData()
-                        }
-                        
-                        
+              
                     })
+
                 }
-                
+
             }
-            
+
+
         }
-        
+
+      print(imageComment)
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,19 +104,21 @@ class FeedTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return usersBeingFollowed.count
+        return usernames.count
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let myCell = tableView.dequeueReusableCellWithIdentifier("imagePostCell", forIndexPath: indexPath) as! cell
                 
-        if usersBeingFollowed.count > 0 {
-            myCell.userLabel.text = imageComment[indexPath.row]
+        if imageFiles.count > 0{
+            myCell.userLabel.text = "\(usernames[indexPath.row]) completed a challenge!"
             imageFiles[indexPath.row].getDataInBackgroundWithBlock({ (data, error) -> Void in
                 if let downloadedImage = UIImage(data: data!) {
                     
                     myCell.imagePost.image = downloadedImage
+//                    self.tableView.reloadData()
+
                 }
             })
         }
