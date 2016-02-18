@@ -22,8 +22,8 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         
         if imagePlaceholder.image != UIImage(named: "1455683886_camera.png") {
             
-            print(imagePlaceholder)
-            print(imagePlaceholder.image)
+//            print(imagePlaceholder)
+//            print(imagePlaceholder.image)
             
             
             activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
