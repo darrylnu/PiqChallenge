@@ -3,7 +3,7 @@
 //  ChallengeMe
 //
 //  Created by Darryl Nunn on 2/16/16.
-//  Copyright © 2016 Parse. All rights reserved.
+//  Copyright © 2016 Nunnotha. All rights reserved.
 //
 
 import UIKit
@@ -20,40 +20,49 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
     
     @IBAction func postImage(sender: AnyObject) {
         
-        activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-        
-        
-        let imageData = UIImagePNGRepresentation(imagePlaceholder.image!)
-        let imageFile = PFFile(name: "image.png", data: imageData!)
-        
-        var post = PFObject(className: "Post")
-        post["userId"] = PFUser.currentUser()?.objectId
-        post["imageComment"] = comment.text
-        post["imageFile"] = imageFile
-        
-        post.saveInBackgroundWithBlock { (success, error) -> Void in
+        if imagePlaceholder.image != UIImage(named: "1455683886_camera.png") {
             
-            self.activityIndicator.stopAnimating()
-            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+            print(imagePlaceholder)
+            print(imagePlaceholder.image)
             
-            if error == nil {
-                print("success")
-                self.imagePlaceholder.image = UIImage(named: "1455683886_camera.png")
-                self.comment.text = ""
-                self.postedAlerter("Post Successful", message: "Challenge Accepted!", addAction: "Cool")
+            
+            activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
+            activityIndicator.center = self.view.center
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+            view.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
+            
+            UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+            
+            
+            let imageData = UIImagePNGRepresentation(imagePlaceholder.image!)
+            let imageFile = PFFile(name: "image.png", data: imageData!)
+            
+            var post = PFObject(className: "Post")
+            post["userId"] = PFUser.currentUser()?.objectId
+            post["imageComment"] = comment.text
+            post["imageFile"] = imageFile
+            
+            post.saveInBackgroundWithBlock { (success, error) -> Void in
                 
+                self.activityIndicator.stopAnimating()
+                UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 
-            } else {
-                self.postedAlerter("Post Unsuccessful", message: "Please try again later", addAction: "Ok")
+                if error == nil {
+                    print("success")
+                    self.imagePlaceholder.image = UIImage(named: "1455683886_camera.png")
+                    self.comment.text = ""
+                    self.postedAlerter("Post Successful", message: "Challenge Accepted!", addAction: "Cool")
+                    
+                    
+                } else {
+                    self.postedAlerter("Post Unsuccessful", message: "Please try again later", addAction: "Ok")
+                }
             }
+        } else {
+            postedAlerter("Image Not Found", message: "Please choose an image to upload", addAction: "Ok, my bad")
         }
         
         
@@ -90,6 +99,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
     func postedAlerter (title:String, message: String, addAction: String){
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.view.tintColor = UIColor.redColor()
         alert.addAction(UIAlertAction(title: addAction, style: UIAlertActionStyle.Default, handler: { (action) -> Void in
             alert.dismissViewControllerAnimated(true, completion: nil)
         }))
@@ -101,6 +111,9 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.hidesBackButton = true
+
 
         // Do any additional setup after loading the view.
     }

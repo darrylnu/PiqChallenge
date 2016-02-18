@@ -3,7 +3,7 @@
 //  ChallengeMe
 //
 //  Created by Darryl Nunn on 2/16/16.
-//  Copyright © 2016 Parse. All rights reserved.
+//  Copyright © 2016 Nunnotha. All rights reserved.
 //
 
 import UIKit
@@ -26,6 +26,9 @@ class TableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        navigationItem.hidesBackButton = true
+
         
         refresher = UIRefreshControl()
         

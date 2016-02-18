@@ -82,7 +82,9 @@
                                     <constraint firstAttribute="width" constant="55" id="2qB-Tp-PMu"/>
                                     <constraint firstAttribute="width" constant="42" id="dNV-mY-UKx"/>
                                 </constraints>
-                                <state key="normal" title="Log In"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" red="0.93725490196078431" green="0.0" blue="0.074509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="dNV-mY-UKx"/>
@@ -99,7 +101,9 @@
                                     <constraint firstAttribute="width" constant="83" id="da2-GF-t5i"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Sign Up!"/>
+                                <state key="normal" title="Sign Up!">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="En1-2b-fBb"/>
                                 </connections>
@@ -201,7 +205,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QmD-c9-MFf" id="GGx-4n-xIe">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -211,16 +215,21 @@
                             <outlet property="delegate" destination="QdI-4N-4hI" id="L0C-S8-ohJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="User List" id="Xqd-Eo-JhL">
-                        <barButtonItem key="backBarButtonItem" title="Users" id="mpt-nU-mQF">
-                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Post" id="KOY-kT-kpM">
-                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <toolbarItems>
+                        <barButtonItem title="home" id="ZgF-n5-GNs"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="jhd-2U-KU1"/>
+                        <barButtonItem title="users" id="hFg-Wj-mv7"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="i5L-Mx-aF8"/>
+                        <barButtonItem title="challenges" id="puK-Af-tht"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="VF8-gb-apU"/>
+                        <barButtonItem systemItem="camera" id="d21-lc-BcJ">
                             <connections>
-                                <segue destination="PSy-nj-Cak" kind="show" id="QNO-fb-4qp"/>
+                                <segue destination="PSy-nj-Cak" kind="show" id="pmq-GD-PkH"/>
                             </connections>
                         </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="User List" id="Xqd-Eo-JhL">
+                        <barButtonItem key="backBarButtonItem" title="Users" id="mpt-nU-mQF"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </tableViewController>
@@ -294,7 +303,19 @@
                             <constraint firstItem="Tfh-6D-xFQ" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="yDf-Ra-JFG"/>
                         </constraints>
                     </view>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem title="home" id="2Bg-1g-gNl"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="aIk-4K-fme"/>
+                        <barButtonItem title="users" id="klo-Vf-sC7">
+                            <connections>
+                                <segue destination="QdI-4N-4hI" kind="show" id="5QS-b3-19S"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="cXI-kU-2Lz"/>
+                        <barButtonItem title="challenges" id="2NX-m9-3mi"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="693-xU-jQu"/>
+                        <barButtonItem systemItem="camera" id="wrE-5t-Tgs"/>
+                    </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -309,12 +330,20 @@
         <!--Navigation Controller-->
         <scene sceneID="RqM-fz-8xe">
             <objects>
-                <navigationController id="kx8-uu-8nU" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="kx8-uu-8nU" sceneMemberID="viewController">
+                    <toolbarItems>
+                        <barButtonItem id="Ogm-ov-3kD"/>
+                    </toolbarItems>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6O3-kV-sQz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="GP2-FR-h6E">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </toolbar>
                     <connections>
                         <segue destination="QdI-4N-4hI" kind="relationship" relationship="rootViewController" id="3ik-K5-PTL"/>
                     </connections>
@@ -327,4 +356,7 @@
     <resources>
         <image name="1455683886_camera.png" width="128" height="128"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3ik-K5-PTL"/>
+    </inferredMetricsTieBreakers>
 </document>

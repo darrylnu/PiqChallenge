@@ -1,5 +1,5 @@
 /**
-* Copyright (c) 2015-present, Parse, LLC.
+* Copyright (c) 2015-present, Nunnotha, LLC.
 * All rights reserved.
 *
 * This source code is licensed under the BSD-style license found in the
@@ -140,14 +140,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UIAdapt
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
        
     }
     
     override func viewDidAppear(animated: Bool) {
+       
+        print(PFUser.currentUser()?.objectId)
         
-        if PFUser.currentUser() != nil {
+        if PFUser.currentUser()?.objectId != nil {
             self.performSegueWithIdentifier("login", sender: self)
-            
+        
 
         }
     }
