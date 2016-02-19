@@ -17,6 +17,7 @@ class TableViewController: UITableViewController {
     
     var usernames = [""]
     var userIds = [""]
+    var userPics = [String:PFFile]()
     var isFollowing = ["":false]
     
     
@@ -32,7 +33,7 @@ class TableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         navigationItem.hidesBackButton = true
-
+        
         
         refresher = UIRefreshControl()
         
@@ -55,6 +56,7 @@ class TableViewController: UITableViewController {
                 self.usernames.removeAll(keepCapacity: true)
                 self.userIds.removeAll(keepCapacity: true)
                 self.isFollowing.removeAll(keepCapacity: true)
+                self.userPics.removeAll(keepCapacity: true)
                 
                 for objects in users {
                     if let user = objects as? PFUser {
@@ -63,10 +65,11 @@ class TableViewController: UITableViewController {
                             
                             if user.objectId != currentUser.objectId {
                                 
-                                print(user)
-                                
                                 self.usernames.append(user.username!)
                                 self.userIds.append(user.objectId!)
+                                if let image = user["profileImage"] {
+                                    self.userPics[user.objectId!] = image as? PFFile
+                                }
                                 
                                 
                                 
@@ -102,7 +105,7 @@ class TableViewController: UITableViewController {
             }
             
         })
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -124,14 +127,28 @@ class TableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        
+        
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UsersTableViewCell
         
         cell.userImage.frame = CGRectMake(0, 0, 100, 100)
         cell.userImage.clipsToBounds = true
         cell.userImage.layer.cornerRadius =  cell.userImage.frame.height/2
+//        print(userPics[userIds[indexPath.row]], indexPath.row)
+        
+        
+        if userPics[userIds[indexPath.row]] != nil {
+            userPics[userIds[indexPath.row]]!.getDataInBackgroundWithBlock { (data, error) -> Void in
+                if let data = data {
+                    cell.userImage.image = UIImage(data: data)
+                }
+            }
+        }
         
         // Configure the cell...
-            cell.userLabel.text = usernames[indexPath.row]
+        cell.userLabel.text = usernames[indexPath.row]
         if isFollowing[userIds[indexPath.row]] == true {
             
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
@@ -141,6 +158,12 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        print(indexPath.row)
+        print(userPics[userIds[indexPath.row]], "this is userpics at the row")
+        
+        print(userPics.count, "this is userpics count")
+        
         
         if isFollowing[userIds[indexPath.row]] == false {
             
@@ -168,7 +191,7 @@ class TableViewController: UITableViewController {
             query.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
                 if let object = object {
                     for users in object {
-                      users.deleteInBackground()
+                        users.deleteInBackground()
                     }
                 }
             })

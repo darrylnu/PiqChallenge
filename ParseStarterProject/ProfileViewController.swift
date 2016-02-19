@@ -67,6 +67,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.hidesBackButton = true
+        
+        profilePic.frame = CGRectMake(0, 0, 100, 100)
+        profilePic.layer.cornerRadius = profilePic.frame.height * 1.2
+        profilePic.clipsToBounds = true
+        
         username.text = PFUser.currentUser()?.username
         
         var user = PFUser.query()
@@ -74,19 +80,45 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         user?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
             if error == nil {
                 for users in object! {
+                    if users["profileImage"] != nil {
                      users["profileImage"].getDataInBackgroundWithBlock({ (data, error) -> Void in
                         if let downloadedImage = UIImage(data: data!) {
                             self.profilePic.image = downloadedImage
                         }
                         
                      })
+                    }
                 }
             }
         })
-        
-        profilePic.frame = CGRectMake(0, 0, 100, 100)
-        profilePic.layer.cornerRadius = profilePic.frame.height * 1.2
-        profilePic.clipsToBounds = true
+        var numOfFollowers = 0
+        var numFollowing = 0
+        var query1 = PFQuery(className: "Followers")
+        query1.whereKey("follower", equalTo: (PFUser.currentUser()?.objectId)!)
+        query1.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+            if error == nil {
+                if let object = object {
+                    for user in object {
+                        numFollowing++
+                    }
+                    self.followingCount.text = "following: \(numFollowing)"
+                }
+            }
+        }
+        var query2 = PFQuery(className: "Followeres")
+        query2.whereKey("following", equalTo: (PFUser.currentUser()?.objectId)!)
+        query2.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+            if error == nil {
+                if let object = object {
+                    for user in object {
+                        numOfFollowers++
+                    }
+                    self.followersCount.text = "followers: \(numOfFollowers)"
+                }
+            }
+        }
+
+       
 
         // Do any additional setup after loading the view.
     }

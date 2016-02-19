@@ -208,7 +208,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="134.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="overcoming-injury.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="b8c-ED-Dlr">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderpic.png" translatesAutoresizingMaskIntoConstraints="NO" id="b8c-ED-Dlr">
                                             <rect key="frame" x="8" y="18" width="100" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="OFc-or-hLa"/>
@@ -604,17 +604,26 @@
                                     <outlet property="delegate" destination="PSy-nj-Cak" id="gbv-bq-PUm"/>
                                 </connections>
                             </pickerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="1455683886_camera.png" translatesAutoresizingMaskIntoConstraints="NO" id="Tfh-6D-xFQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1455683886_camera.png" translatesAutoresizingMaskIntoConstraints="NO" id="Tfh-6D-xFQ">
                                 <rect key="frame" x="66" y="99" width="243" height="201"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="201" id="3TZ-Ud-ebp"/>
+                                    <constraint firstAttribute="width" constant="243" id="Suo-w0-quX"/>
                                     <constraint firstAttribute="height" constant="201" id="ety-q3-pkv"/>
                                     <constraint firstAttribute="width" constant="243" id="imL-g1-0l3"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ety-q3-pkv"/>
+                                        <exclude reference="imL-g1-0l3"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="i0u-59-HJs" firstAttribute="top" secondItem="Tfh-6D-xFQ" secondAttribute="bottom" constant="19" id="5xV-qO-ATu"/>
+                            <constraint firstItem="Tfh-6D-xFQ" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="E7b-rE-rTx"/>
                             <constraint firstItem="Yjs-yq-KyQ" firstAttribute="top" secondItem="i0u-59-HJs" secondAttribute="bottom" constant="38" id="EfY-qa-Nnb"/>
                             <constraint firstItem="i0u-59-HJs" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="FKC-Tc-X7g"/>
                             <constraint firstItem="Yjs-yq-KyQ" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="Npa-Ev-w7Y"/>
@@ -628,9 +637,13 @@
                             <constraint firstItem="Yjs-yq-KyQ" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="tT0-CC-tms"/>
                             <constraint firstItem="Tfh-6D-xFQ" firstAttribute="top" secondItem="VqG-S8-we0" secondAttribute="bottom" constant="35" id="tcE-l6-jS6"/>
                             <constraint firstItem="Tfh-6D-xFQ" firstAttribute="centerX" secondItem="n7D-vt-FlT" secondAttribute="centerX" id="yDf-Ra-JFG"/>
+                            <constraint firstItem="Tfh-6D-xFQ" firstAttribute="top" secondItem="VqG-S8-we0" secondAttribute="bottom" constant="35" id="yJY-ef-BSR"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="tcE-l6-jS6"/>
+                                <exclude reference="yDf-Ra-JFG"/>
+                                <exclude reference="5xV-qO-ATu"/>
                                 <exclude reference="EfY-qa-Nnb"/>
                                 <exclude reference="Npa-Ev-w7Y"/>
                                 <exclude reference="QPE-PK-1RF"/>
@@ -694,18 +707,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="overcoming-injury.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="C8b-Tj-Wgm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholderpic.png" translatesAutoresizingMaskIntoConstraints="NO" id="C8b-Tj-Wgm">
                                 <rect key="frame" x="67" y="102" width="240" height="240"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="challenges completed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmq-Qa-VIZ">
-                                <rect key="frame" x="67" y="406" width="240" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="challenges accepted: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmq-Qa-VIZ">
+                                <rect key="frame" x="35" y="406" width="272" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="following" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krv-gu-s8k">
-                                <rect key="frame" x="67" y="460" width="240" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="following:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Krv-gu-s8k">
+                                <rect key="frame" x="35" y="460" width="240" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -717,14 +730,15 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="user" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZV-Zv-ZzC">
-                                <rect key="frame" x="67" y="73" width="240" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="followers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YxM-ZB-Fqv">
-                                <rect key="frame" x="67" y="505" width="240" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="followers:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YxM-ZB-Fqv">
+                                <rect key="frame" x="35" y="513" width="240" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -826,6 +840,7 @@
     <resources>
         <image name="1455683886_camera.png" width="128" height="128"/>
         <image name="overcoming-injury.jpg" width="750" height="500"/>
+        <image name="placeholderpic.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="aDS-9W-YCm"/>
