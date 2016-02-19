@@ -93,6 +93,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         })
         var numOfFollowers = 0
         var numFollowing = 0
+        var challengesAccepted = 0
         var query1 = PFQuery(className: "Followers")
         query1.whereKey("follower", equalTo: (PFUser.currentUser()?.objectId)!)
         query1.findObjectsInBackgroundWithBlock { (object, error) -> Void in
@@ -114,6 +115,19 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                         numOfFollowers++
                     }
                     self.followersCount.text = "followers: \(numOfFollowers)"
+                }
+            }
+        }
+        var query3 = PFQuery(className: "Post")
+        query3.whereKey("userId", equalTo: (PFUser.currentUser()?.objectId)!)
+        query3.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+            
+            if error == nil {
+                if let object = object {
+                    for user in object {
+                        challengesAccepted++
+                    }
+                    self.challengesCount.text = "challenges accepted: \(challengesAccepted)"
                 }
             }
         }

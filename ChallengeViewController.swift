@@ -19,6 +19,8 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        
         navigationItem.hidesBackButton = true
         
         for challenges in CameraViewController().challengeSource {
