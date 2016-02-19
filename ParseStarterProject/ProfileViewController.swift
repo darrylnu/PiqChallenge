@@ -91,31 +91,25 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                 }
             }
         })
-        var numOfFollowers = 0
-        var numFollowing = 0
+        var numOfFollowers:Int32?
+        var numFollowing: Int32?
         var challengesAccepted = 0
         var query1 = PFQuery(className: "Followers")
         query1.whereKey("follower", equalTo: (PFUser.currentUser()?.objectId)!)
-        query1.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+        query1.countObjectsInBackgroundWithBlock { (object, error) -> Void in
             if error == nil {
-                if let object = object {
-                    for user in object {
-                        numFollowing++
-                    }
-                    self.followingCount.text = "following: \(numFollowing)"
-                }
+                numFollowing = object
+                    self.followingCount.text = "following: \(numFollowing!)"
             }
         }
-        var query2 = PFQuery(className: "Followeres")
+        var query2 = PFQuery(className: "Followers")
         query2.whereKey("following", equalTo: (PFUser.currentUser()?.objectId)!)
-        query2.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+        query2.countObjectsInBackgroundWithBlock { (object, error) -> Void in
             if error == nil {
-                if let object = object {
-                    for user in object {
-                        numOfFollowers++
-                    }
-                    self.followersCount.text = "followers: \(numOfFollowers)"
-                }
+                numOfFollowers = object
+                    self.followersCount.text = "followers: \(numOfFollowers!)"
+            } else {
+                print(error)
             }
         }
         var query3 = PFQuery(className: "Post")

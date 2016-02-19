@@ -14,6 +14,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UIAdapt
     
     var signupActive:Bool = true
     
+    @IBOutlet var logo: UIImageView!
+    
+    @IBOutlet var logoLabel: UILabel!
     
     @IBOutlet var userNameField: UITextField!
     @IBOutlet var passwordField: UITextField!
@@ -21,6 +24,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UIAdapt
     @IBOutlet var formLabel: UILabel!
     @IBOutlet var loginLabel: UIButton!
     @IBOutlet var signUpLabel: UIButton!
+    var counter = 0
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
@@ -144,15 +148,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UIAdapt
        
     }
     
-    override func viewDidAppear(animated: Bool) {
-       
-        print(PFUser.currentUser()?.objectId)
-        
-        if PFUser.currentUser()?.objectId != nil {
-            self.performSegueWithIdentifier("login", sender: self)
-        
-
+    override func viewDidLayoutSubviews() {
+        if counter == 0 {
+            logo.center = CGPointMake(logo.center.x, logo.center.y + 400)
+            logoLabel.center = CGPointMake(logoLabel.center.x - 400, logoLabel.center.y)
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+//        if PFUser.currentUser()?.objectId != nil {
+//            self.performSegueWithIdentifier("login", sender: self)
+//        }
+        
+        if counter == 0 {
+        UIView.animateWithDuration(1) { () -> Void in
+            self.logo.center = CGPointMake(self.logo.center.x, self.logo.center.y-400)
+            
+            self.logoLabel.center = CGPointMake(self.logoLabel.center.x + 400, self.logoLabel.center.y)
+            
+            self.counter++
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -160,3 +178,4 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UIAdapt
         // Dispose of any resources that can be recreated.
     }
 }
+
