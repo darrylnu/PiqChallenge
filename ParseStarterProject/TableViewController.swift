@@ -11,6 +11,8 @@ import Parse
 
 class TableViewController: UITableViewController {
     
+    
+    
     var refresher: UIRefreshControl!
     
     var usernames = [""]
@@ -20,6 +22,8 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -58,6 +62,8 @@ class TableViewController: UITableViewController {
                         if let currentUser = PFUser.currentUser() {
                             
                             if user.objectId != currentUser.objectId {
+                                
+                                print(user)
                                 
                                 self.usernames.append(user.username!)
                                 self.userIds.append(user.objectId!)
@@ -118,11 +124,14 @@ class TableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UsersTableViewCell
+        
+        cell.userImage.frame = CGRectMake(0, 0, 100, 100)
+        cell.userImage.clipsToBounds = true
+        cell.userImage.layer.cornerRadius =  cell.userImage.frame.height/2
         
         // Configure the cell...
-        cell.textLabel?.text = usernames[indexPath.row]
-        
+            cell.userLabel.text = usernames[indexPath.row]
         if isFollowing[userIds[indexPath.row]] == true {
             
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
