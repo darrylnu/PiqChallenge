@@ -19,15 +19,30 @@ class FeedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-//        print(PFUser.currentUser()?.objectId)
+        let getCurrentUser = PFQuery(className: "Post")
+        getCurrentUser.whereKey("userId", equalTo: (PFUser.currentUser()?.objectId)!)
+        getCurrentUser.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+            
+            self.usernames.removeAll(keepCapacity: true)
+            self.imageComment.removeAll(keepCapacity: true)
+            self.imageFiles.removeAll(keepCapacity: true)
+            
+
+            if let objects = object {
+                
+                for images in objects {
+                    
+                    
+                    self.imageFiles.append(images["imageFile"] as! PFFile)
+                    self.imageComment.append(images["imageComment"] as! String)
+                    self.usernames.append((PFUser.currentUser()?.username)!)
+                }
+                
+
+        }
+        }
+
         
         let getFollowedUsersQuery = PFQuery(className: "Followers")
         
@@ -35,10 +50,8 @@ class FeedTableViewController: UITableViewController {
         
         getFollowedUsersQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             
-            self.usernames.removeAll(keepCapacity: true)
-            self.imageComment.removeAll(keepCapacity: true)
-            self.imageFiles.removeAll(keepCapacity: true)
             self.usersBeingFollowed.removeAll(keepCapacity: true)
+
             
             if let objects = objects {
                 
@@ -46,24 +59,24 @@ class FeedTableViewController: UITableViewController {
                     
                     let followedUser = object["following"] as! String
                     
-                    let query1 = PFQuery(className: "Post")
+                    let getFollowedUsers = PFQuery(className: "Post")
                     
-                    query1.whereKey("userId", equalTo: followedUser)
+                    getFollowedUsers.whereKey("userId", equalTo: followedUser)
                     
-                    let query2 = PFQuery(className: "Post")
-                    query2.whereKey("userId", equalTo: (PFUser.currentUser()?.objectId)!)
                     
-                    var query = PFQuery.orQueryWithSubqueries([query1,query2])
-                    
-                    query.findObjectsInBackgroundWithBlock({ (imageObjects, error) -> Void in
+                    getFollowedUsers.findObjectsInBackgroundWithBlock({ (imageObjects, error) -> Void in
                         
                         
                         if let objects = imageObjects {
                             
                             for images in objects {
                                 
+                                
                                 self.imageFiles.append(images["imageFile"] as! PFFile)
                                 self.imageComment.append(images["imageComment"] as! String)
+//                                print(self.imageComment.count)
+                                
+
                                 
                                 let userQuery = PFUser.query()
                                 userQuery?.whereKey("_id", equalTo: images["userId"])
@@ -72,26 +85,37 @@ class FeedTableViewController: UITableViewController {
                                         for username in user {
                                             self.usernames.append(username["username"] as! String)
                                             self.tableView.reloadData()
+
                                         }
                                         
                                     }
-                               
+                                    
                                 })
+                                
                                 
 
                                 
                             }
+                            
+
  
                         }
+
               
                     })
 
+
                 }
 
+
             }
+            
+
 
 
         }
+
+        
 
     }
 
@@ -116,7 +140,7 @@ class FeedTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let myCell = tableView.dequeueReusableCellWithIdentifier("imagePostCell", forIndexPath: indexPath) as! cell
                 
-        if imageFiles.count > 0{
+        if imageComment.count > 0{
             myCell.userLabel.text = "\(usernames[indexPath.row]) completed the \(imageComment[indexPath.row]) challenge!"
             imageFiles[indexPath.row].getDataInBackgroundWithBlock({ (data, error) -> Void in
                 if let downloadedImage = UIImage(data: data!) {
@@ -124,6 +148,9 @@ class FeedTableViewController: UITableViewController {
                     myCell.imagePost.image = downloadedImage
 //                    self.tableView.reloadData()
 
+                } else {
+                    myCell.userLabel.text = ""
+                    myCell.imagePost.image = nil
                 }
             })
         }
@@ -131,49 +158,4 @@ class FeedTableViewController: UITableViewController {
         return myCell
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
+   }

@@ -1,10 +1,4 @@
-//
-//  TableViewController.swift
-//  ChallengeMe
-//
-//  Created by Darryl Nunn on 2/16/16.
-//  Copyright © 2016 Nunnotha. All rights reserved.
-//
+
 
 import UIKit
 import Parse
@@ -23,14 +17,6 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         navigationItem.hidesBackButton = true
         
@@ -137,6 +123,8 @@ class TableViewController: UITableViewController {
         if isFollowing[userIds[indexPath.row]] == true {
             
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
         }
         
         cell.userImage.frame = CGRectMake(0, 0, 100, 100)
@@ -155,12 +143,9 @@ class TableViewController: UITableViewController {
         return cell
     }
     
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-//        print(indexPath.row)
-//        print(userPics[userIds[indexPath.row]], "this is userpics at the row")
-//        
-//        print(userPics.count, "this is userpics count")
         let cell: UsersTableViewCell = tableView.cellForRowAtIndexPath(indexPath)! as! UsersTableViewCell
         
         if isFollowing[userIds[indexPath.row]] == false {
@@ -195,15 +180,5 @@ class TableViewController: UITableViewController {
             
         }
     }
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
 }

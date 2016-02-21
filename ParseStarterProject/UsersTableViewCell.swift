@@ -12,8 +12,13 @@ class UsersTableViewCell: UITableViewCell {
 
     @IBOutlet var userImage: UIImageView!
     
-    
   
     @IBOutlet var userLabel: UILabel!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.userImage.image = UIImage(named: "placeholderpic")
+    }
    
 }

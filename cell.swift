@@ -14,4 +14,11 @@ class cell: UITableViewCell {
     
     @IBOutlet var userLabel: UILabel!
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.imagePost.image = nil
+        self.userLabel.text = ""
+    }
+    
 }

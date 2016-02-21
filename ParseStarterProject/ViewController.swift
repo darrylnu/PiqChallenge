@@ -157,9 +157,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UIAdapt
     
     override func viewDidAppear(animated: Bool) {
         
-//        if PFUser.currentUser()?.objectId != nil {
-//            self.performSegueWithIdentifier("login", sender: self)
-//        }
+        if PFUser.currentUser()?.objectId != nil {
+            self.performSegueWithIdentifier("login", sender: self)
+        }
         
         if counter == 0 {
         UIView.animateWithDuration(1) { () -> Void in

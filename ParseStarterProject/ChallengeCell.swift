@@ -14,4 +14,11 @@ class ChallengeCell: UITableViewCell {
     @IBOutlet var challengeCount: UILabel!
 
     @IBOutlet var challengeStrip: UILabel!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.challengeCount.text = "0"
+        self.challengeStrip.text = ""
+        
+    }
 }
