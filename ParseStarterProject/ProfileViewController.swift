@@ -106,6 +106,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         query2.whereKey("following", equalTo: (PFUser.currentUser()?.objectId)!)
         query2.countObjectsInBackgroundWithBlock { (object, error) -> Void in
             if error == nil {
+                print(object)
                 numOfFollowers = object
                     self.followersCount.text = "followers: \(numOfFollowers!)"
             } else {

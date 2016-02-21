@@ -48,7 +48,7 @@ class TableViewController: UITableViewController {
     
     func refresh (){
         
-        var query = PFUser.query()
+        let query = PFUser.query()
         
         query?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
             if let users = object {
@@ -61,21 +61,21 @@ class TableViewController: UITableViewController {
                 for objects in users {
                     if let user = objects as? PFUser {
                         
-                        if let currentUser = PFUser.currentUser() {
-                            
-                            if user.objectId != currentUser.objectId {
+                        
+                            if user.objectId != PFUser.currentUser()?.objectId {
                                 
                                 self.usernames.append(user.username!)
                                 self.userIds.append(user.objectId!)
+                                
                                 if let image = user["profileImage"] {
                                     self.userPics[user.objectId!] = image as? PFFile
                                 }
                                 
                                 
                                 
-                                var query = PFQuery(className: "Followers")
+                                let query = PFQuery(className: "Followers")
                                 query.whereKey("following", equalTo: user.objectId!)
-                                query.whereKey("follower", equalTo: (PFUser.currentUser()?.objectId)!)
+                                query.whereKey("follower", equalTo: (PFUser.currentUser()!.objectId)!)
                                 query.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
                                     if let object = object {
                                         
@@ -88,6 +88,8 @@ class TableViewController: UITableViewController {
                                         }
                                     }
                                     if self.isFollowing.count == self.usernames.count {
+                                        print(self.isFollowing)
+                                        print(self.userIds)
                                         
                                         self.tableView.reloadData()
                                         self.refresher.endRefreshing()
@@ -101,8 +103,6 @@ class TableViewController: UITableViewController {
                         
                     }
                 }
-                
-            }
             
         })
         
@@ -122,22 +122,26 @@ class TableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return userIds.count
+        return usernames.count
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UsersTableViewCell {
         
         
         
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UsersTableViewCell
         
+        cell.userLabel.text = usernames[indexPath.row]
+        if isFollowing[userIds[indexPath.row]] == true {
+            
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
+        
         cell.userImage.frame = CGRectMake(0, 0, 100, 100)
         cell.userImage.clipsToBounds = true
         cell.userImage.layer.cornerRadius =  cell.userImage.frame.height/2
-//        print(userPics[userIds[indexPath.row]], indexPath.row)
-        
         
         if userPics[userIds[indexPath.row]] != nil {
             userPics[userIds[indexPath.row]]!.getDataInBackgroundWithBlock { (data, error) -> Void in
@@ -147,32 +151,26 @@ class TableViewController: UITableViewController {
             }
         }
         
-        // Configure the cell...
-        cell.userLabel.text = usernames[indexPath.row]
-        if isFollowing[userIds[indexPath.row]] == true {
-            
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-        }
         
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        print(indexPath.row)
-        print(userPics[userIds[indexPath.row]], "this is userpics at the row")
-        
-        print(userPics.count, "this is userpics count")
-        
+//        print(indexPath.row)
+//        print(userPics[userIds[indexPath.row]], "this is userpics at the row")
+//        
+//        print(userPics.count, "this is userpics count")
+        let cell: UsersTableViewCell = tableView.cellForRowAtIndexPath(indexPath)! as! UsersTableViewCell
         
         if isFollowing[userIds[indexPath.row]] == false {
             
             isFollowing[userIds[indexPath.row]] = true
             
-            var cell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+           
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
             
-            var following = PFObject(className: "Followers")
+            let following = PFObject(className: "Followers")
             following["following"] = userIds[indexPath.row]
             following["follower"] = PFUser.currentUser()?.objectId
             
@@ -181,10 +179,9 @@ class TableViewController: UITableViewController {
             
             isFollowing[userIds[indexPath.row]] = false
             
-            var cell: UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
             cell.accessoryType = UITableViewCellAccessoryType.None
             
-            var query = PFQuery(className: "Followers")
+            let query = PFQuery(className: "Followers")
             query.whereKey("following", equalTo: userIds[indexPath.row])
             query.whereKey("follower", equalTo: (PFUser.currentUser()?.objectId)!)
             

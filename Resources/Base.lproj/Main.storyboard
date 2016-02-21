@@ -317,7 +317,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="135" id="QmD-c9-MFf" customClass="UsersTableViewCell" customModule="ChallengeMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="135"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="135"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QmD-c9-MFf" id="GGx-4n-xIe">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="134.5"/>
@@ -431,7 +431,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="overcoming-injury.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Epc-ND-nWp">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="overcoming-injury.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Epc-ND-nWp">
                                 <rect key="frame" x="-4" y="64" width="383" height="267"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="267" id="3S7-TP-S4E"/>
@@ -451,7 +451,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JdH-0z-FTs">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JdH-0z-FTs">
                                 <rect key="frame" x="-4" y="331" width="383" height="292"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -460,7 +460,7 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="challengeCell" rowHeight="96" id="7DS-P0-HEL" customClass="ChallengeCell" customModule="ChallengeMe" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="383" height="96"/>
+                                        <rect key="frame" x="0.0" y="28" width="383" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7DS-P0-HEL" id="pkj-q6-6PS">
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="95.5"/>
@@ -1013,6 +1013,7 @@
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </toolbarItems>
+                    <navigationItem key="navigationItem" id="irc-p3-XaI"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="challengesCount" destination="lmq-Qa-VIZ" id="Xen-Ch-hr9"/>
@@ -1049,7 +1050,7 @@
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </toolbar>
                     <connections>
-                        <segue destination="QdI-4N-4hI" kind="relationship" relationship="rootViewController" id="3ik-K5-PTL"/>
+                        <segue destination="MLc-sd-IhG" kind="relationship" relationship="rootViewController" id="OxN-yx-UeQ"/>
                     </connections>
                 </navigationController>
                 <barButtonItem style="plain" systemItem="flexibleSpace" id="eu1-lk-fqj"/>
@@ -1083,10 +1084,10 @@
         <image name="placeholderpic.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aDS-9W-YCm"/>
+        <segue reference="we0-pc-HDR"/>
+        <segue reference="G7J-4O-MBe"/>
+        <segue reference="v4Q-gz-FHx"/>
         <segue reference="fDv-qD-rc8"/>
-        <segue reference="wD7-mX-3eP"/>
-        <segue reference="YI5-Pd-Svi"/>
-        <segue reference="J3F-fp-GJ6"/>
+        <segue reference="pmq-GD-PkH"/>
     </inferredMetricsTieBreakers>
 </document>

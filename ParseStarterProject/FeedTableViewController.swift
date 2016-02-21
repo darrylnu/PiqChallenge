@@ -29,7 +29,7 @@ class FeedTableViewController: UITableViewController {
         
 //        print(PFUser.currentUser()?.objectId)
         
-        var getFollowedUsersQuery = PFQuery(className: "Followers")
+        let getFollowedUsersQuery = PFQuery(className: "Followers")
         
         getFollowedUsersQuery.whereKey("follower", equalTo: PFUser.currentUser()!.objectId!)
         
@@ -38,20 +38,24 @@ class FeedTableViewController: UITableViewController {
             self.usernames.removeAll(keepCapacity: true)
             self.imageComment.removeAll(keepCapacity: true)
             self.imageFiles.removeAll(keepCapacity: true)
+            self.usersBeingFollowed.removeAll(keepCapacity: true)
             
             if let objects = objects {
                 
                 for object in objects {
                     
-                    var followedUser = object["following"] as! String
+                    let followedUser = object["following"] as! String
                     
-                    var query = PFQuery(className: "Post")
+                    let query1 = PFQuery(className: "Post")
                     
-                    query.whereKey("userId", equalTo: followedUser)
+                    query1.whereKey("userId", equalTo: followedUser)
+                    
+                    let query2 = PFQuery(className: "Post")
+                    query2.whereKey("userId", equalTo: (PFUser.currentUser()?.objectId)!)
+                    
+                    var query = PFQuery.orQueryWithSubqueries([query1,query2])
                     
                     query.findObjectsInBackgroundWithBlock({ (imageObjects, error) -> Void in
-                        
-                        
                         
                         
                         if let objects = imageObjects {
@@ -61,7 +65,7 @@ class FeedTableViewController: UITableViewController {
                                 self.imageFiles.append(images["imageFile"] as! PFFile)
                                 self.imageComment.append(images["imageComment"] as! String)
                                 
-                                var userQuery = PFUser.query()
+                                let userQuery = PFUser.query()
                                 userQuery?.whereKey("_id", equalTo: images["userId"])
                                 userQuery?.findObjectsInBackgroundWithBlock({ (user, error) -> Void in
                                     if let user = user {

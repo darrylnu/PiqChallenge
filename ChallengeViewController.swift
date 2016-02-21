@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 class ChallengeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+
     var challengeCount = [String]()
     var challengeName = [String]()
     
@@ -18,6 +18,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
 
         
