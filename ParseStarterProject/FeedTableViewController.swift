@@ -146,11 +146,7 @@ class FeedTableViewController: UITableViewController {
                 if let downloadedImage = UIImage(data: data!) {
                     
                     myCell.imagePost.image = downloadedImage
-//                    self.tableView.reloadData()
 
-                } else {
-                    myCell.userLabel.text = ""
-                    myCell.imagePost.image = nil
                 }
             })
         }

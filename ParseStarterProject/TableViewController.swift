@@ -74,8 +74,7 @@ class TableViewController: UITableViewController {
                                         }
                                     }
                                     if self.isFollowing.count == self.usernames.count {
-                                        print(self.isFollowing)
-                                        print(self.userIds)
+                            
                                         
                                         self.tableView.reloadData()
                                         self.refresher.endRefreshing()

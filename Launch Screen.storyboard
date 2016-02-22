@@ -17,13 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright © 2016 Nunnotha. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
-                                <rect key="frame" x="20" y="626" width="335" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bio-hazard.png" translatesAutoresizingMaskIntoConstraints="NO" id="tYN-ev-INm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bio-hazard-bubble-yellow-2400px.png" translatesAutoresizingMaskIntoConstraints="NO" id="tYN-ev-INm">
                                 <rect key="frame" x="84" y="160" width="206" height="209"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="209" id="Xqh-fP-4vI"/>
@@ -33,9 +27,6 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" symbolic="YES" id="SfN-ll-jLj"/>
-                            <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
                             <constraint firstItem="tYN-ev-INm" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lEA-XC-MKx"/>
                             <constraint firstItem="tYN-ev-INm" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="140" id="vlj-R0-tHF"/>
                         </constraints>
@@ -48,6 +39,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bio-hazard.png" width="1895" height="2175"/>
+        <image name="bio-hazard-bubble-yellow-2400px.png" width="2400" height="2400"/>
     </resources>
 </document>
