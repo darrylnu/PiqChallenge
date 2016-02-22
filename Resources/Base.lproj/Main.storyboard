@@ -436,6 +436,104 @@
             </objects>
             <point key="canvasLocation" x="944.5" y="317.5"/>
         </scene>
+        <!--Trending Challenge Table View Controller-->
+        <scene sceneID="rbz-67-Cck">
+            <objects>
+                <tableViewController id="0Ms-PT-PgU" customClass="TrendingChallengeTableViewController" customModule="ChallengeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="306" sectionHeaderHeight="28" sectionFooterHeight="28" id="ahu-jy-Lzz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="trendingCell" rowHeight="307" id="fBI-nZ-TTD" customClass="TrendingChallengeTableViewCell" customModule="ChallengeMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="307"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fBI-nZ-TTD" id="2Wj-fL-o4P">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="306.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eo3-Gd-22C">
+                                            <rect key="frame" x="8" y="251" width="359" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iFw-zD-b7f">
+                                            <rect key="frame" x="67" y="37" width="240" height="200"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="200" id="Maf-Tl-BZz"/>
+                                                <constraint firstAttribute="width" constant="240" id="kN9-Cm-SDA"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="iFw-zD-b7f" firstAttribute="top" secondItem="2Wj-fL-o4P" secondAttribute="topMargin" constant="29" id="3M7-Il-6vc"/>
+                                        <constraint firstItem="iFw-zD-b7f" firstAttribute="centerX" secondItem="2Wj-fL-o4P" secondAttribute="centerX" id="4GQ-fB-3Ee"/>
+                                        <constraint firstItem="eo3-Gd-22C" firstAttribute="trailing" secondItem="2Wj-fL-o4P" secondAttribute="trailingMargin" id="Goo-PM-Pqb"/>
+                                        <constraint firstItem="iFw-zD-b7f" firstAttribute="top" secondItem="2Wj-fL-o4P" secondAttribute="topMargin" constant="29" id="dZY-m7-zTa"/>
+                                        <constraint firstItem="eo3-Gd-22C" firstAttribute="leading" secondItem="2Wj-fL-o4P" secondAttribute="leadingMargin" id="gCf-Wp-alw"/>
+                                        <constraint firstItem="eo3-Gd-22C" firstAttribute="top" secondItem="iFw-zD-b7f" secondAttribute="bottom" constant="14" id="huk-av-Tlc"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="3M7-Il-6vc"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="postComment" destination="eo3-Gd-22C" id="xUH-gV-SWR"/>
+                                    <outlet property="postImage" destination="iFw-zD-b7f" id="x7Z-Zw-85x"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0Ms-PT-PgU" id="gfn-3V-x97"/>
+                            <outlet property="delegate" destination="0Ms-PT-PgU" id="bOG-bM-y9x"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem image="home-7.png" id="E3R-uN-RjM">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="Fif-6B-n23" kind="show" id="NRc-3l-ILU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="xGt-dP-zxQ"/>
+                        <barButtonItem image="business-target-7.png" id="ddv-Ty-eUm">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="QdI-4N-4hI" kind="show" id="Kk1-ay-d5i"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="a3q-oY-6Iu"/>
+                        <barButtonItem systemItem="camera" id="W2o-Hh-Qr6">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="PSy-nj-Cak" kind="show" id="Bav-fk-ud8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="oOa-Tt-EbG"/>
+                        <barButtonItem image="biohazard.png" id="3ic-RF-7aB">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="ltx-PL-M8J" kind="show" id="Vvt-yV-Owc"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="mu9-yB-O3q"/>
+                        <barButtonItem image="circle-user-7.png" id="hxP-gw-wLZ">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="MLc-sd-IhG" kind="show" id="Qof-cZ-9MV"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B1t-4l-8v6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1478.5" y="-468.5"/>
+        </scene>
         <!--Activity-->
         <scene sceneID="XkS-eu-1kp">
             <objects>
@@ -522,6 +620,7 @@
                                         <connections>
                                             <outlet property="challengeCount" destination="jZv-Ro-Y0N" id="NsB-hT-3Jz"/>
                                             <outlet property="challengeStrip" destination="Auo-zP-paf" id="QiI-qy-fcz"/>
+                                            <segue destination="0Ms-PT-PgU" kind="show" id="SIY-c5-Mfn"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1150,10 +1249,10 @@
         <image name="placeholderpic.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NfV-cO-3Z1"/>
-        <segue reference="pmq-GD-PkH"/>
-        <segue reference="5QS-b3-19S"/>
-        <segue reference="Uy2-pE-erx"/>
-        <segue reference="qbv-lV-7Pn"/>
+        <segue reference="Vvt-yV-Owc"/>
+        <segue reference="KQ2-jC-YhP"/>
+        <segue reference="dGS-I4-Mtv"/>
+        <segue reference="hP8-Ku-f7u"/>
+        <segue reference="c4N-40-Pgo"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -80,6 +80,16 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        print("cell selected")
+        
+        pressedChallenge = challengeName[indexPath.row]
+//        print(pressedChallenge!)
+        
+    }
+
+    
 
     /*
     // MARK: - Navigation

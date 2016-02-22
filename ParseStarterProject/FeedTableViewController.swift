@@ -84,6 +84,7 @@ class FeedTableViewController: UITableViewController {
                                     if let user = user {
                                         for username in user {
                                             self.usernames.append(username["username"] as! String)
+                                            
                                             self.tableView.reloadData()
 
                                         }
