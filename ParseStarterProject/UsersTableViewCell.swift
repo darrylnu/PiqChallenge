@@ -1,6 +1,6 @@
 //
 //  UsersTableViewCell.swift
-//  ChallengeMe
+//  PiqChallenge
 //
 //  Created by Darryl Nunn on 2/18/16.
 //  Copyright © 2016 Parse. All rights reserved.

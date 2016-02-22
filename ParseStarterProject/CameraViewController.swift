@@ -1,6 +1,6 @@
 //
 //  CameraViewController.swift
-//  ChallengeMe
+//  PiqChallenge
 //
 //  Created by Darryl Nunn on 2/16/16.
 //  Copyright © 2016 Nunnotha. All rights reserved.
