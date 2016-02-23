@@ -10,7 +10,7 @@
 import UIKit
 import Parse
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UIAdaptivePresentationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UIAdaptivePresentationControllerDelegate, UITextFieldDelegate {
     
     var signupActive:Bool = true
     
@@ -150,10 +150,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UIAdapt
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.userNameField.delegate = self
+        self.passwordField.delegate = self
         
         
        
     }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(textField:UITextField!) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true
+    }
+
     
     override func viewDidLayoutSubviews() {
         if counter == 0 {

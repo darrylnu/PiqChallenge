@@ -55,8 +55,6 @@ class FeedTableViewController: UITableViewController {
             self.usernames.removeAll(keepCapacity: true)
             self.imageComment.removeAll(keepCapacity: true)
             self.imageFiles.removeAll(keepCapacity: true)
-            
-            
             self.usersBeingFollowed.removeAll(keepCapacity: true)
             
             
