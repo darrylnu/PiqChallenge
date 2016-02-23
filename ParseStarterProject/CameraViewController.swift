@@ -26,10 +26,10 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
     
     @IBAction func postImage(sender: AnyObject) {
         
-        if imagePlaceholder.image != UIImage(named: "1455683886_camera.png") {
-            
-            //            print(imagePlaceholder)
-            //            print(imagePlaceholder.image)
+        let placeHolderImageData = UIImagePNGRepresentation(imagePlaceholder.image!)
+        let uploadedImageData = UIImagePNGRepresentation(UIImage(named: "Placeholder.png")!)
+        
+        if placeHolderImageData != uploadedImageData && chosenChallenge != nil  {
             
             
             activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
@@ -58,7 +58,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
                 
                 if error == nil {
                     print("success")
-                    self.imagePlaceholder.image = UIImage(named: "1455683886_camera.png")
+                    self.imagePlaceholder.image = UIImage(named: "Placeholder.png")
                     self.postedAlerter("Post Successful", message: "Challenge Accepted!", addAction: "Cool")
                     
                     

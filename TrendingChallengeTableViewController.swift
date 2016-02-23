@@ -41,6 +41,7 @@ class TrendingChallengeTableViewController: UITableViewController {
                         if let object = object {
                             for user in object {
                                 self.usernames.append(user["username"] as! String)
+                                print(self.usernames)
                                 self.tableView.reloadData()
                             }
                         }
@@ -74,12 +75,18 @@ class TrendingChallengeTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let trendCell = tableView.dequeueReusableCellWithIdentifier("trendingCell", forIndexPath: indexPath) as! TrendingChallengeTableViewCell
         
+        if images.count > 0 {
+        
          trendCell.postComment.text = "\(usernames[indexPath.row]) completed the \(pressedChallenge!) challenge!"
         
         images[indexPath.row].getDataInBackgroundWithBlock { (data, error) -> Void in
             if let downloadedImage = UIImage(data: data!) {
               trendCell.postImage.image = downloadedImage
+            } else {
+                print(error)
             }
+
+        }
         }
         
        

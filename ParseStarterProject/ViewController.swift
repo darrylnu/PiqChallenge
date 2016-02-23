@@ -72,6 +72,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UIAdapt
                     if error == nil {
                         //signup successful
                         self.performSegueWithIdentifier("login", sender: self)
+                        let followMyself = PFObject(className: "Followers")
+                        
+                        followMyself["follower"] = PFUser.currentUser()?.objectId
+                        
+                        followMyself["following"] = PFUser.currentUser()?.objectId
+                        
+                        followMyself.saveInBackground()
 
                        
                     } else {
