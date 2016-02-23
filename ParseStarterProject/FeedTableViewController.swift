@@ -20,30 +20,6 @@ class FeedTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         
-        //        let getCurrentUser = PFQuery(className: "Post")
-        //        getCurrentUser.whereKey("userId", equalTo: (PFUser.currentUser()?.objectId)!)
-        //        getCurrentUser.findObjectsInBackgroundWithBlock { (object, error) -> Void in
-        //
-        //            self.usernames.removeAll(keepCapacity: true)
-        //            self.imageComment.removeAll(keepCapacity: true)
-        //            self.imageFiles.removeAll(keepCapacity: true)
-        //
-        //
-        //            if let objects = object {
-        //
-        //                for images in objects {
-        //
-        //
-        //                    self.imageFiles.append(images["imageFile"] as! PFFile)
-        //                    self.imageComment.append(images["imageComment"] as! String)
-        //                    self.usernames.append((PFUser.currentUser()?.username)!)
-        //                }
-        //
-        //
-        //            }
-        //        }
-        
-        
         
         
         let getFollowedUsersQuery = PFQuery(className: "Followers")
@@ -67,7 +43,7 @@ class FeedTableViewController: UITableViewController {
                     let getFollowedUsers = PFQuery(className: "Post")
                     
                     getFollowedUsers.whereKey("userId", equalTo: followedUser)
-                    getFollowedUsers.orderByDescending("created")
+                    getFollowedUsers.orderByDescending("createdAt")
                     
                     
                     getFollowedUsers.findObjectsInBackgroundWithBlock({ (imageObjects, error) -> Void in
@@ -80,24 +56,10 @@ class FeedTableViewController: UITableViewController {
                                 
                                 self.imageFiles.append(images["imageFile"] as! PFFile)
                                 self.imageComment.append(images["imageComment"] as! String)
-                                //                                print(self.imageComment.count)
+                                self.usernames.append(images["username"] as! String)
+                                self.tableView.reloadData()
                                 
                                 
-                                
-                                let userQuery = PFUser.query()
-                                userQuery?.whereKey("_id", equalTo: images["userId"])
-                                userQuery?.findObjectsInBackgroundWithBlock({ (user, error) -> Void in
-                                    if let user = user {
-                                        for username in user {
-                                            self.usernames.append(username["username"] as! String)
-                                            
-                                            self.tableView.reloadData()
-                                            
-                                        }
-                                        
-                                    }
-                                    
-                                })
                                 
                                 
                                 

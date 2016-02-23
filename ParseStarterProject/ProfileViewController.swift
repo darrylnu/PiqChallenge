@@ -99,7 +99,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         query1.countObjectsInBackgroundWithBlock { (object, error) -> Void in
             if error == nil {
                 numFollowing = object
-                    self.followingCount.text = "following: \(numFollowing!)"
+                    self.followingCount.text = "following: \(numFollowing!-1)"
             }
         }
         var query2 = PFQuery(className: "Followers")
@@ -108,7 +108,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             if error == nil {
                 print(object)
                 numOfFollowers = object
-                    self.followersCount.text = "followers: \(numOfFollowers!)"
+                    self.followersCount.text = "followers: \(numOfFollowers!-1)"
             } else {
                 print(error)
             }

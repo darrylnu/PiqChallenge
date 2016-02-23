@@ -13,7 +13,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
     
     @IBOutlet var challengePicker: UIPickerView!
     
-    var challengeSource = ["Choose Challenge", "#randomKiss", "#iceBucket", "#boogerMunch", "#pinkRibbon","#blackLivesMatter", "#redShoe"]
+    var challengeSource = [String]()
     var chosenChallenge: String?
     
     
@@ -48,6 +48,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
             
             var post = PFObject(className: "Post")
             post["userId"] = PFUser.currentUser()?.objectId
+            post["username"] = PFUser.currentUser()?.username
             post["imageComment"] = chosenChallenge
             post["imageFile"] = imageFile
             
@@ -138,6 +139,16 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         
         
         navigationItem.hidesBackButton = true
+        
+        var query = PFQuery(className: "Challenges")
+        query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+            if let object = object {
+                for challengeNames in object {
+                    self.challengeSource.append(challengeNames["challenge"] as! String)
+                    self.challengePicker.reloadAllComponents()
+                }
+            }
+        }
         
         
         // Do any additional setup after loading the view.

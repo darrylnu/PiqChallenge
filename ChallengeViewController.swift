@@ -28,7 +28,7 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
             
             if challenges != "Choose Challenge" {
             
-            var query = PFQuery(className: "Post")
+            let query = PFQuery(className: "Post")
             query.whereKey("imageComment", equalTo: challenges)
             query.countObjectsInBackgroundWithBlock({ (count, error) -> Void in
                 if error == nil {

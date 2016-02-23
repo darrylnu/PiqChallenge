@@ -162,7 +162,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UIAdapt
         self.view.endEditing(true)
     }
     
-    func textFieldShouldReturn(textField:UITextField!) -> Bool {
+    func textFieldShouldReturn(textField:UITextField) -> Bool {
         
         textField.resignFirstResponder()
         

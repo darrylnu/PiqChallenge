@@ -25,6 +25,7 @@ class TrendingChallengeTableViewController: UITableViewController {
         
         let query = PFQuery(className: "Post")
         query.whereKey("imageComment", equalTo: pressedChallenge!)
+        query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
             
             self.usernames.removeAll(keepCapacity: true)
@@ -33,20 +34,8 @@ class TrendingChallengeTableViewController: UITableViewController {
             if let object = object {
                 for images in object {
                     self.images.append(images["imageFile"] as! PFFile)
-                    
-                    let userQuery = PFUser.query()
-                    
-                    userQuery?.whereKey("_id", equalTo: images["userId"])
-                    userQuery?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
-                        if let object = object {
-                            for user in object {
-                                self.usernames.append(user["username"] as! String)
-                                print(self.usernames)
-                                self.tableView.reloadData()
-                            }
-                        }
-                    })
-                    
+                    self.usernames.append(images["username"] as! String)
+                    self.tableView.reloadData()
                     
                 }
             }
