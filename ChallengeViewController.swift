@@ -24,25 +24,28 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         
         navigationItem.hidesBackButton = true
         
-        for challenges in CameraViewController().challengeSource {
+        let challengeQuery = PFQuery(className: "Challenges")
+        challengeQuery.whereKey("challenge", notEqualTo: "Choose Challenge")
+        challengeQuery.findObjectsInBackgroundWithBlock { (object, error) -> Void in
             
-            if challenges != "Choose Challenge" {
+            self.challengeName.removeAll(keepCapacity: true)
+            self.challengeCount.removeAll(keepCapacity: true)
             
-            let query = PFQuery(className: "Post")
-            query.whereKey("imageComment", equalTo: challenges)
-            query.countObjectsInBackgroundWithBlock({ (count, error) -> Void in
-                if error == nil {
-                   
-                    self.challengeCount.append(String(count))
-                    self.challengeName.append(challenges)
-                    self.table.reloadData()
-
+            if let object = object {
+                for challenges in object {
                     
-                } else {
-                    print(error)
+                    let countQuery = PFQuery(className: "Post")
+                    countQuery.whereKey("imageComment", equalTo: challenges["challenge"])
+                    countQuery.orderByDescending("createdAt")
+                    countQuery.countObjectsInBackgroundWithBlock({ (count, error) -> Void in
+                        self.challengeCount.append("\(count)")
+                        self.challengeName.append(challenges["challenge"] as! String)
+                        print(self.challengeCount)
+                        print(self.challengeName)
+                        self.table.reloadData()
+                    })
                 }
-            })
-        }
+            }
         }
         
 
@@ -72,33 +75,16 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
         
             cell.challengeCount.text = challengeCount[indexPath.row]
             cell.challengeStrip.text = "Users accepted the \(challengeName[indexPath.row]) challenge!"
-//            print(challengeCountStorage)
-        
-//        cell.textLabel?.text = "test"
-//        print(challengeCountStorage.count)
+
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        print("cell selected")
-        
         pressedChallenge = challengeName[indexPath.row]
-//        print(pressedChallenge!)
         
     }
 
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
