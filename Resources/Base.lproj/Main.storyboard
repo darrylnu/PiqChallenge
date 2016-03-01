@@ -942,7 +942,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="piqChallenge!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krn-n5-rX4">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accept Challenge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krn-n5-rX4">
                                             <rect key="frame" x="134" y="317" width="96" height="16.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="70" id="Nll-20-gff"/>
@@ -1025,6 +1025,7 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="flagButton" destination="hao-jP-hXU" id="Zc5-wj-ma5"/>
                                     <outlet property="imagePost" destination="RSA-Rj-QfH" id="u6v-kA-oYa"/>
                                     <outlet property="starButtonImage" destination="njI-CH-Nts" id="cN2-sg-h2a"/>
                                     <outlet property="starLabel" destination="MhS-N7-7bx" id="eyS-k7-faU"/>

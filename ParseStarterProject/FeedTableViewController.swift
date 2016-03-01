@@ -20,13 +20,12 @@ class FeedTableViewController: UITableViewController {
     
     func addStar (sender: AnyObject) {
         
-        
         let star = sender as! UIButton
         star.setImage(UIImage(named: "star.png"), forState: .Normal)
-        var imageIdentification = imageId[star.tag]
+        let imageIdentification = imageId[star.tag]
         var starCount = imageStarCount[star.tag]
         starCount++
-        var post = PFQuery(className: "Post")
+        let post = PFQuery(className: "Post")
         post.getObjectInBackgroundWithId(imageIdentification) { (object, error) -> Void in
             if error != nil {
                 print(error)
@@ -37,8 +36,42 @@ class FeedTableViewController: UITableViewController {
             }
         }
         
-        print("hi")
     
+    }
+    
+    func flagImage(sender:AnyObject) {
+        
+        flaggedAlerter("Post Flagged", message: "This user has been reported for posting inappropriate content.", addAction: "Cool")
+        
+        let flag = sender as! UIButton
+        let imageIdentification = imageId[flag.tag]
+        let post = PFQuery(className: "Post")
+        post.getObjectInBackgroundWithId(imageIdentification) { (object, error) -> Void in
+            if error == nil {
+               var currentFlagCount = object!["flags"] as! Int
+                currentFlagCount++
+                if currentFlagCount > 3 {
+                    object?.deleteInBackground()
+                    
+                } else {
+                    object!["flags"] = currentFlagCount
+                    object?.saveInBackground()
+                }
+                
+            }
+        }
+    }
+    
+    func flaggedAlerter (title:String, message: String, addAction: String){
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.view.tintColor = UIColor.redColor()
+        alert.addAction(UIAlertAction(title: addAction, style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
     }
     
   
@@ -156,6 +189,10 @@ class FeedTableViewController: UITableViewController {
         //set the tag so that it can be passed to the star button
         myCell.starButtonImage.tag = indexPath.row
         myCell.starButtonImage.addTarget(self, action: "addStar:", forControlEvents: .TouchUpInside)
+        
+        //set the tag so that it can be passed to the flag button
+        myCell.flagButton.tag = indexPath.row
+        myCell.flagButton.addTarget(self, action: "flagImage:", forControlEvents: .TouchUpInside)
         
         return myCell
     }

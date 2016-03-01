@@ -51,6 +51,8 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
             post["username"] = PFUser.currentUser()?.username
             post["imageComment"] = chosenChallenge
             post["imageFile"] = imageFile
+            post["stars"] = 0
+            post["flags"] = 0
             
             post.saveInBackgroundWithBlock { (success, error) -> Void in
                 

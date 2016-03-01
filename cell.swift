@@ -14,6 +14,7 @@ class cell: UITableViewCell {
     
     @IBOutlet var userLabel: UILabel!
     
+    @IBOutlet var flagButton: UIButton!
     
     @IBOutlet var starLabel: UILabel!
     
