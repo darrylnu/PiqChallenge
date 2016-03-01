@@ -28,6 +28,13 @@
 		179C515A1C73DD0100243A08 /* 1455683886_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 179C51591C73DD0100243A08 /* 1455683886_camera.png */; };
 		179C51601C75986A00243A08 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179C515F1C75986A00243A08 /* FeedTableViewController.swift */; };
 		179C51621C759B5B00243A08 /* cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179C51611C759B5B00243A08 /* cell.swift */; };
+		17B0D4F41C8550910015A1B5 /* EULAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0D4F31C8550910015A1B5 /* EULAViewController.swift */; };
+		17B0D4F61C856E9A0015A1B5 /* message-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 17B0D4F51C856E9A0015A1B5 /* message-7.png */; };
+		17B0D4F81C856EC80015A1B5 /* star-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 17B0D4F71C856EC80015A1B5 /* star-7.png */; };
+		17B0D4FA1C856EF00015A1B5 /* flag-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 17B0D4F91C856EF00015A1B5 /* flag-7.png */; };
+		17B0D4FC1C8579C00015A1B5 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 17B0D4FB1C8579C00015A1B5 /* star.png */; };
+		17B0D4FE1C8579E10015A1B5 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 17B0D4FD1C8579E10015A1B5 /* message.png */; };
+		17B0D5001C8579FB0015A1B5 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 17B0D4FF1C8579FB0015A1B5 /* flag.png */; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
@@ -62,6 +69,13 @@
 		179C51591C73DD0100243A08 /* 1455683886_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1455683886_camera.png; sourceTree = "<group>"; };
 		179C515F1C75986A00243A08 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		179C51611C759B5B00243A08 /* cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = cell.swift; path = ../cell.swift; sourceTree = "<group>"; };
+		17B0D4F31C8550910015A1B5 /* EULAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EULAViewController.swift; sourceTree = "<group>"; };
+		17B0D4F51C856E9A0015A1B5 /* message-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-7.png"; sourceTree = "<group>"; };
+		17B0D4F71C856EC80015A1B5 /* star-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-7.png"; sourceTree = "<group>"; };
+		17B0D4F91C856EF00015A1B5 /* flag-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flag-7.png"; sourceTree = "<group>"; };
+		17B0D4FB1C8579C00015A1B5 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		17B0D4FD1C8579E10015A1B5 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
+		17B0D4FF1C8579FB0015A1B5 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		814C3AC91B69877600E307BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,6 +153,13 @@
 				1727883C1C7B68F00003F788 /* TrendingChallengeTableViewController.swift */,
 				1727883E1C7B6AF20003F788 /* TrendingChallengeTableViewCell.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				17B0D4F31C8550910015A1B5 /* EULAViewController.swift */,
+				17B0D4F51C856E9A0015A1B5 /* message-7.png */,
+				17B0D4FF1C8579FB0015A1B5 /* flag.png */,
+				17B0D4FD1C8579E10015A1B5 /* message.png */,
+				17B0D4F91C856EF00015A1B5 /* flag-7.png */,
+				17B0D4F71C856EC80015A1B5 /* star-7.png */,
+				17B0D4FB1C8579C00015A1B5 /* star.png */,
 				1716EB6E1C7618B4009219AC /* overcoming-injury.jpg */,
 				1727881C1C76D0920003F788 /* placeholderpic.png */,
 				1727883A1C7A51940003F788 /* bio-hazard-bubble-yellow-2400px.png */,
@@ -240,14 +261,20 @@
 				178907631C71B2FF00F0FA1E /* Launch Screen.storyboard in Resources */,
 				172788291C7725600003F788 /* home-7.png in Resources */,
 				172788391C7A4B720003F788 /* Placeholder.png in Resources */,
+				17B0D4F61C856E9A0015A1B5 /* message-7.png in Resources */,
 				172788251C7725280003F788 /* circle-user-7.png in Resources */,
 				172788211C77250C0003F788 /* business-target-7.png in Resources */,
 				1727883B1C7A51940003F788 /* bio-hazard-bubble-yellow-2400px.png in Resources */,
+				17B0D4FC1C8579C00015A1B5 /* star.png in Resources */,
 				1727881D1C76D0920003F788 /* placeholderpic.png in Resources */,
 				172788231C77251C0003F788 /* camera-7.png in Resources */,
+				17B0D5001C8579FB0015A1B5 /* flag.png in Resources */,
+				17B0D4FA1C856EF00015A1B5 /* flag-7.png in Resources */,
 				814C3ACA1B69877600E307BB /* Main.storyboard in Resources */,
 				179C515A1C73DD0100243A08 /* 1455683886_camera.png in Resources */,
 				814C3ACB1B69877600E307BB /* Images.xcassets in Resources */,
+				17B0D4F81C856EC80015A1B5 /* star-7.png in Resources */,
+				17B0D4FE1C8579E10015A1B5 /* message.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1727883F1C7B6AF20003F788 /* TrendingChallengeTableViewCell.swift in Sources */,
+				17B0D4F41C8550910015A1B5 /* EULAViewController.swift in Sources */,
 				1727883D1C7B68F00003F788 /* TrendingChallengeTableViewController.swift in Sources */,
 				179C51601C75986A00243A08 /* FeedTableViewController.swift in Sources */,
 				1716EB6B1C75FB21009219AC /* ChallengeCell.swift in Sources */,

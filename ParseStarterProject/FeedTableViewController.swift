@@ -13,8 +13,36 @@ class FeedTableViewController: UITableViewController {
     
     var usersBeingFollowed = [String]()
     var imageFiles = [PFFile]()
+    var imageId = [String]()
     var imageComment = [""]
     var usernames = [String]()
+    var imageStarCount = [Int]()
+    
+    func addStar (sender: AnyObject) {
+        
+        
+        let star = sender as! UIButton
+        star.setImage(UIImage(named: "star.png"), forState: .Normal)
+        var imageIdentification = imageId[star.tag]
+        var starCount = imageStarCount[star.tag]
+        starCount++
+        var post = PFQuery(className: "Post")
+        post.getObjectInBackgroundWithId(imageIdentification) { (object, error) -> Void in
+            if error != nil {
+                print(error)
+            } else {
+                object!["stars"] = starCount
+                object?.saveInBackground()
+                
+            }
+        }
+        
+        print("hi")
+    
+    }
+    
+  
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +60,8 @@ class FeedTableViewController: UITableViewController {
             self.imageComment.removeAll(keepCapacity: true)
             self.imageFiles.removeAll(keepCapacity: true)
             self.usersBeingFollowed.removeAll(keepCapacity: true)
+            self.imageStarCount.removeAll(keepCapacity: true)
+            self.imageId.removeAll(keepCapacity: true)
             
             
             if let objects = objects {
@@ -57,6 +87,8 @@ class FeedTableViewController: UITableViewController {
                                 self.imageFiles.append(images["imageFile"] as! PFFile)
                                 self.imageComment.append(images["imageComment"] as! String)
                                 self.usernames.append(images["username"] as! String)
+                                self.imageStarCount.append(images["stars"] as! Int)
+                                self.imageId.append(images.objectId!)
                                 self.tableView.reloadData()
                                 
                                 
@@ -111,6 +143,7 @@ class FeedTableViewController: UITableViewController {
         
         if imageComment.count > 0{
             myCell.userLabel.text = "\(usernames[indexPath.row]) completed the \(imageComment[indexPath.row]) challenge!"
+            myCell.starLabel.text = "\(imageStarCount[indexPath.row]) Stars!"
             imageFiles[indexPath.row].getDataInBackgroundWithBlock({ (data, error) -> Void in
                 if let downloadedImage = UIImage(data: data!) {
                     
@@ -119,6 +152,10 @@ class FeedTableViewController: UITableViewController {
                 }
             })
         }
+        
+        //set the tag so that it can be passed to the star button
+        myCell.starButtonImage.tag = indexPath.row
+        myCell.starButtonImage.addTarget(self, action: "addStar:", forControlEvents: .TouchUpInside)
         
         return myCell
     }
