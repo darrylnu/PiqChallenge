@@ -40,8 +40,6 @@ class ChallengeViewController: UIViewController, UITableViewDelegate, UITableVie
                     countQuery.countObjectsInBackgroundWithBlock({ (count, error) -> Void in
                         self.challengeCount.append("\(count)")
                         self.challengeName.append(challenges["challenge"] as! String)
-                        print(self.challengeCount)
-                        print(self.challengeName)
                         self.table.reloadData()
                     })
                 }

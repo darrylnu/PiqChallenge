@@ -21,11 +21,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     @IBAction func changeProfilePic(sender: AnyObject) {
         
-        var image = UIImagePickerController()
+        let image = UIImagePickerController()
         image.delegate = self
         image.allowsEditing = true
         
-        var alert = UIAlertController(title: "Choose Upload Source", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Choose Upload Source", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         alert.view.tintColor = UIColor.redColor()
         alert.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
             image.sourceType = UIImagePickerControllerSourceType.Camera
@@ -52,7 +52,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         imageFile?.saveInBackgroundWithBlock({ (success, error) -> Void in
             if success {
                 print("success")
-                var user = PFUser.currentUser()
+                let user = PFUser.currentUser()
                 user!.setObject(imageFile!, forKey: "profileImage")
                 
                 user!.saveInBackground()
@@ -75,7 +75,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         username.text = PFUser.currentUser()?.username
         
-        var user = PFUser.query()
+        let user = PFUser.query()
         user?.whereKey("_id", equalTo: (PFUser.currentUser()?.objectId)!)
         user?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
             if error == nil {
@@ -94,7 +94,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         var numOfFollowers:Int32?
         var numFollowing: Int32?
         var challengesAccepted = 0
-        var query1 = PFQuery(className: "Followers")
+        let query1 = PFQuery(className: "Followers")
         query1.whereKey("follower", equalTo: (PFUser.currentUser()?.objectId)!)
         query1.countObjectsInBackgroundWithBlock { (object, error) -> Void in
             if error == nil {
@@ -102,7 +102,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                     self.followingCount.text = "following: \(numFollowing!-1)"
             }
         }
-        var query2 = PFQuery(className: "Followers")
+        let query2 = PFQuery(className: "Followers")
         query2.whereKey("following", equalTo: (PFUser.currentUser()?.objectId)!)
         query2.countObjectsInBackgroundWithBlock { (object, error) -> Void in
             if error == nil {
@@ -113,7 +113,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                 print(error)
             }
         }
-        var query3 = PFQuery(className: "Post")
+        let query3 = PFQuery(className: "Post")
         query3.whereKey("userId", equalTo: (PFUser.currentUser()?.objectId)!)
         query3.findObjectsInBackgroundWithBlock { (object, error) -> Void in
             

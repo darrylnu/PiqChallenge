@@ -46,7 +46,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
             let imageData = UIImagePNGRepresentation(imagePlaceholder.image!)
             let imageFile = PFFile(name: "image.png", data: imageData!)
             
-            var post = PFObject(className: "Post")
+            let post = PFObject(className: "Post")
             post["userId"] = PFUser.currentUser()?.objectId
             post["username"] = PFUser.currentUser()?.username
             post["imageComment"] = chosenChallenge
@@ -77,11 +77,11 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
     }
     @IBAction func chooseImage(sender: AnyObject) {
         
-        var image = UIImagePickerController()
+        let image = UIImagePickerController()
         image.delegate = self
         image.allowsEditing = true
         
-        var alert = UIAlertController(title: "Choose Upload Source", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Choose Upload Source", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         alert.view.tintColor = UIColor.redColor()
         alert.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
             image.sourceType = UIImagePickerControllerSourceType.Camera
@@ -142,7 +142,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         
         navigationItem.hidesBackButton = true
         
-        var query = PFQuery(className: "Challenges")
+        let query = PFQuery(className: "Challenges")
         query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
             if let object = object {
                 for challengeNames in object {

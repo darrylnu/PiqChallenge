@@ -181,7 +181,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UIAdapt
         
         if PFUser.currentUser()?.objectId != nil {
             self.performSegueWithIdentifier("login", sender: self)
-        }
+            }
         
         if counter == 0 {
         UIView.animateWithDuration(1) { () -> Void in
