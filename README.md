@@ -1,5 +1,5 @@
 # PiqChallenge
-Social Media Application that enables users to complete social challenges and share with friends
+Social media application that enables users to complete social challenges and share with friends
 
 
 
